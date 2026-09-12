@@ -453,7 +453,7 @@ function imgOrPlaceholder(src, label, extraClass){
 function buildCharCards(){
   charTrack.innerHTML = personajes.map((p, i) => `
     <div class="char-card" data-index="${i}">
-      <img src="${p.img}" alt="${p.nombre}"
+      <img src="${p.img}" alt="${p.nombre}" loading="lazy" decoding="async"
            onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',innerHTML:'SIN IMAGEN<br>${p.nombre.replace(/'/g,"\\'")}'}))">
     </div>
   `).join('');
@@ -541,7 +541,7 @@ window.addEventListener('resize', centerActiveCard);
 const sceneTrack = document.getElementById('sceneTrack');
 sceneTrack.innerHTML = escenas.map(s => `
   <div class="scene-card">
-    <img src="${s.img}" alt="${s.alt}"
+    <img src="${s.img}" alt="${s.alt}" loading="lazy" decoding="async"
          onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'${s.alt}\\n(sin imagen todavía)'}))">
   </div>
 `).join('');
