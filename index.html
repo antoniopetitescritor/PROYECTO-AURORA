@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto Aurora — Antonio Petit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #0b0b0c;
+    --bg-2:      #131315;
+    --panel:     #1a1a1d;
+    --ink:       #f2efe9;
+    --ink-dim:   #a7a39c;
+    --blood:     #a52734;
+    --line:      rgba(242,239,233,0.10);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Oswald', sans-serif;
+    line-height:1.5;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  a{color:inherit;}
+  button{font-family:inherit; cursor:pointer;}
+  button:focus-visible, a:focus-visible{outline:2px solid var(--blood); outline-offset:3px;}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:0;
+    text-align:center;
+    overflow:hidden;
+    background:var(--bg);
+  }
+  .hero-banner{
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio:1794/974;
+    object-fit:cover;
+  }
+  .hero-inner{
+    position:relative; z-index:1;
+    padding:120px 24px 70px;
+    background:
+      radial-gradient(ellipse 700px 500px at 50% -5%, rgba(165,39,52,0.10), transparent 65%),
+      var(--bg);
+  }
+  .emblem{
+    position:absolute; top:-140px; left:50%; transform:translateX(-50%);
+    width:520px; height:520px; opacity:0.16;
+    background:
+      repeating-conic-gradient(from 0deg, rgba(242,239,233,0.9) 0deg 4deg, transparent 4deg 30deg);
+    border-radius:50%;
+    -webkit-mask:radial-gradient(circle, black 55%, transparent 78%);
+            mask:radial-gradient(circle, black 55%, transparent 78%);
+  }
+  .kicker{
+    font-size:12px; letter-spacing:0.3em; text-transform:uppercase;
+    color:var(--blood); margin-bottom:18px;
+  }
+  .brand-row{
+    display:flex; align-items:center; justify-content:center; gap:34px; flex-wrap:wrap;
+  }
+  h1.brand{
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    line-height:0.86;
+    letter-spacing:0.01em;
+    text-align:left;
+  }
+  h1.brand .l1{display:block; font-size:clamp(2.2rem, 5vw, 3.1rem); color:var(--ink);}
+  h1.brand .l2{display:block; font-size:clamp(3.6rem, 9vw, 6.4rem); color:var(--ink);}
+  .tagline{
+    margin-top:14px;
+    font-size:14px; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--ink-dim);
+  }
+  .book-cover{
+    width:172px; aspect-ratio:2/3;
+    background:linear-gradient(160deg,#2a1414,#0d0b0c 60%);
+    border:1px solid rgba(242,239,233,0.14);
+    border-radius:3px;
+    transform:rotate(4deg);
+    box-shadow:0 30px 60px -18px rgba(0,0,0,0.7);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:14px;
+    position:relative;
+    overflow:hidden;
+  }
+  .book-cover img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  }
+  .book-cover.ph-cover::after{
+    content:"REEMPLAZAR POR\A TAPA REAL\A (img/tapa-libro.png)";
+    white-space:pre;
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Oswald', sans-serif; font-size:9px; letter-spacing:0.08em;
+    color:rgba(242,239,233,0.35);
+    background:rgba(0,0,0,0.15);
+  }
+  .book-cover .bt{font-family:'Anton'; font-size:15px; color:var(--ink); letter-spacing:0.02em; position:relative; z-index:1;}
+  .book-cover .bt2{font-family:'Anton'; font-size:21px; color:var(--ink); margin-top:2px; position:relative; z-index:1;}
+  .book-cover:not(.ph-cover) .bt,
+  .book-cover:not(.ph-cover) .bt2{display:none;}
+
+  /* ---------- SECTION HEADS ---------- */
+  section{padding:70px 0;}
+  .section-title{
+    font-family:'Anton', sans-serif; font-weight:400;
+    font-size:clamp(1.5rem, 3.4vw, 2.1rem);
+    letter-spacing:0.02em;
+    text-align:center;
+    margin-bottom:44px;
+  }
+  hr.rule{border:none; border-top:1px solid var(--line); max-width:1180px; margin:0 auto;}
+
+  /* ---------- CHARACTER CAROUSEL ---------- */
+  .carousel-shell{position:relative;}
+  .carousel-track-wrap{overflow:hidden; padding:10px 0;}
+  .carousel-track{
+    display:flex; gap:14px;
+    transition:transform 0.45s cubic-bezier(.2,.8,.25,1);
+    will-change:transform;
+  }
+  .char-card{
+    flex:0 0 auto;
+    width:220px;
+    aspect-ratio:2/3;
+    position:relative;
+    border-radius:4px;
+    overflow:hidden;
+    background:var(--panel);
+    cursor:pointer;
+    filter:blur(3px) brightness(0.55);
+    transform:scale(0.92);
+    transition:filter 0.35s ease, transform 0.35s ease;
+    flex-shrink:0;
+  }
+  .char-card.active{
+    filter:blur(0) brightness(1);
+    transform:scale(1.04);
+  }
+  .char-card img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .char-card .ph{
+    width:100%; height:100%;
+    display:flex; align-items:center; justify-content:center;
+    background:repeating-linear-gradient(135deg, #202023, #202023 10px, #1a1a1d 10px, #1a1a1d 20px);
+    color:var(--ink-dim); font-size:11px; letter-spacing:0.08em; text-align:center; padding:14px;
+  }
+  .char-card .cap{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:10px 10px 12px;
+    background:linear-gradient(to top, rgba(0,0,0,0.88), transparent);
+    font-family:'Anton'; font-size:13px; letter-spacing:0.01em;
+    text-align:center;
+  }
+
+  .arrow{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:44px; height:44px; border-radius:50%;
+    background:rgba(11,11,12,0.7);
+    border:1px solid var(--line);
+    color:var(--ink);
+    font-size:18px;
+    display:flex; align-items:center; justify-content:center;
+    z-index:2;
+    transition:background 0.2s ease;
+  }
+  .arrow:hover{background:var(--blood);}
+  .arrow.left{left:-6px;}
+  .arrow.right{right:-6px;}
+  @media (max-width:640px){
+    .arrow.left{left:-2px;} .arrow.right{right:-2px;}
+  }
+
+  .dots{
+    display:flex; gap:6px; justify-content:center; flex-wrap:wrap;
+    margin-top:22px;
+  }
+  .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:rgba(242,239,233,0.22);
+    border:none; padding:0;
+  }
+  .dot.active{background:var(--blood);}
+
+  /* ---------- DETAIL PANEL ---------- */
+  .detail{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:260px 1fr;
+    gap:36px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    padding:32px;
+    align-items:start;
+  }
+  .detail-photo{
+    width:100%; aspect-ratio:2/3; border-radius:3px; overflow:hidden; background:#202023;
+  }
+  .detail-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .detail-photo .ph{
+    width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+    color:var(--ink-dim); font-size:11px; text-align:center; padding:14px;
+    background:repeating-linear-gradient(135deg, #202023, #202023 10px, #1a1a1d 10px, #1a1a1d 20px);
+  }
+  .detail-name{
+    font-family:'Anton'; font-size:clamp(1.5rem,3vw,2rem); letter-spacing:0.01em; margin-bottom:14px;
+  }
+  .detail-bio{color:var(--ink-dim); font-size:15px; max-width:62ch;}
+  @media (max-width:640px){
+    .detail{grid-template-columns:1fr; }
+    .detail-photo{max-width:220px; margin:0 auto;}
+  }
+
+  /* ---------- SCENES CAROUSEL ---------- */
+  .scene-card{
+    flex:0 0 auto; width:280px; aspect-ratio:2/3;
+    border-radius:4px; overflow:hidden; background:var(--panel);
+    flex-shrink:0;
+  }
+  .scene-card img{width:100%; height:100%; object-fit:cover; display:block;}
+  .scene-card .ph{
+    width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+    color:var(--ink-dim); font-size:11px; text-align:center; padding:14px;
+    background:repeating-linear-gradient(135deg, #202023, #202023 10px, #1a1a1d 10px, #1a1a1d 20px);
+  }
+
+  /* ---------- RETAILERS ---------- */
+  .retailer-row{
+    display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+    gap:34px; margin-top:10px;
+  }
+  .retailer-row a{
+    text-decoration:none;
+    font-family:'Oswald'; font-weight:600; font-size:14px;
+    color:var(--ink-dim);
+    border-bottom:1px solid transparent;
+    transition:color 0.2s ease, border-color 0.2s ease;
+    padding-bottom:2px;
+  }
+  .retailer-row a:hover{color:var(--ink); border-color:var(--blood);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:60px 24px 50px; text-align:center;
+    border-top:1px solid var(--line);
+  }
+  footer .logo-slot{
+    width:180px; height:70px; margin:0 auto 26px;
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  footer .logo-slot img{max-width:100%; max-height:100%; object-fit:contain;}
+  footer .logo-slot.ph-logo{
+    border:1px dashed var(--line);
+    border-radius:4px;
+  }
+  footer .logo-slot.ph-logo::after{
+    content:"LOGO\A (img/logo.png)";
+    white-space:pre;
+    font-family:'Oswald', sans-serif; font-size:9px; letter-spacing:0.08em;
+    color:rgba(242,239,233,0.35);
+    text-align:center;
+  }
+  footer .brand-mini{font-family:'Anton'; font-size:1.3rem; letter-spacing:0.02em;}
+  footer .brand-mini .sub{
+    display:block; font-family:'Oswald'; font-size:10px; letter-spacing:0.18em;
+    color:var(--ink-dim); margin-top:4px; font-weight:500;
+  }
+  footer .links{margin-top:22px; font-size:12px; letter-spacing:0.1em; color:var(--ink-dim);}
+  footer .links a{margin:0 10px; text-decoration:none; color:var(--ink-dim);}
+  footer .links a:hover{color:var(--ink);}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <img class="hero-banner" src="img/hero.png" alt="Proyecto Aurora — Un thriller apasionante"
+       onload="document.getElementById('heroFallback').style.display='none';"
+       onerror="this.style.display='none';">
+
+  <div class="hero-inner" id="heroFallback">
+    <div class="emblem" aria-hidden="true"></div>
+    <div class="kicker">Antonio Petit</div>
+    <div class="brand-row">
+      <h1 class="brand"><span class="l1">PROYECTO</span><span class="l2">AURORA</span></h1>
+      <div class="book-cover">
+        <img src="img/tapa-libro.png" alt="Tapa del libro Proyecto Aurora"
+             onerror="this.style.display='none'; this.parentElement.classList.add('ph-cover');">
+        <span class="bt">PROYECTO</span>
+        <span class="bt2">AURORA</span>
+      </div>
+    </div>
+    <div class="tagline">Un thriller apasionante</div>
+  </div>
+</header>
+
+<hr class="rule">
+
+<!-- PERSONAJES -->
+<section class="wrap">
+  <h2 class="section-title">Guía de personajes</h2>
+
+  <div class="carousel-shell">
+    <button class="arrow left" id="charPrev" aria-label="Personaje anterior">‹</button>
+    <button class="arrow right" id="charNext" aria-label="Personaje siguiente">›</button>
+    <div class="carousel-track-wrap">
+      <div class="carousel-track" id="charTrack"></div>
+    </div>
+  </div>
+
+  <div class="dots" id="charDots"></div>
+
+  <div class="detail" id="charDetail"></div>
+</section>
+
+<hr class="rule">
+
+<!-- ESCENAS -->
+<section class="wrap">
+  <h2 class="section-title">Escenas</h2>
+  <div class="carousel-shell">
+    <button class="arrow left" id="scenePrev" aria-label="Escena anterior">‹</button>
+    <button class="arrow right" id="sceneNext" aria-label="Escena siguiente">›</button>
+    <div class="carousel-track-wrap">
+      <div class="carousel-track" id="sceneTrack"></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- TIENDAS -->
+<section class="wrap" style="text-align:center;">
+  <h2 class="section-title">Conseguí el libro</h2>
+  <div class="retailer-row">
+    <a href="https://www.amazon.com/dp/B0HD7V7B7S" target="_blank" rel="noopener">Amazon</a>
+    <a href="https://play.google.com/store/audiobooks/details?id=AQAAAED6KytrwM" target="_blank" rel="noopener">Google Play</a>
+    <a href="https://www.dunken.org/SYS.shop/index.php?id=22571" target="_blank" rel="noopener">Editorial Dunken</a>
+    <a href="https://www.buscalibre.com.ar/libro-proyecto-aurora/9789878558103/p/68642705" target="_blank" rel="noopener">Buscalibre</a>
+    <a href="https://www.mercadolibre.com.ar/proyecto-aurora/up/MLAU5038596899" target="_blank" rel="noopener">Mercado Libre</a>
+  </div>
+</section>
+
+<footer>
+  <div class="logo-slot" id="logoSlot">
+    <img src="img/logo.png" alt="Logo Proyecto Aurora"
+         onerror="this.style.display='none'; this.parentElement.classList.add('ph-logo');">
+  </div>
+  <div class="links">
+    <a href="https://www.instagram.com/antoniopetitescritor" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.tiktok.com/@antoniopetitescritor" target="_blank" rel="noopener">TikTok</a>
+    <a href="mailto:antoniopetitescritor@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   DATOS DE PERSONAJES
+   - "img": ruta al archivo (dejalo así si todavía no tenés
+     la imagen final — se muestra un marcador temporal).
+   - Para activar una foto: poné el archivo en /img/ con el
+     mismo nombre que aparece acá abajo.
+   ========================================================= */
+const personajes = [
+  { id:"gabriel",  nombre:'Gabriel "el Turco" Hazzad', img:"img/gabriel.png", imgDetalle:"img/detalle/gabriel.png",
+    bio:'Uno de los amigos de siempre en La Fogazza — el que nunca falta a una charla de café.' },
+  { id:"hipolito",  nombre:'Hipólito "Puflito" Gómez', img:"img/hipolito.png", imgDetalle:"img/detalle/hipolito.png",
+    bio:'El filósofo del bar. Un truco de magia, un consejo de vida, y un encendedor que se queda en la memoria de Darío para siempre.' },
+  { id:"eduardo",  nombre:'Eduardo "el Judío"', img:"img/eduardo.png", imgDetalle:"img/detalle/eduardo.png",
+    bio:'Otro pilar de La Fogazza — parte del grupo que nunca deja solo a Darío, pase lo que pase.' },
+  { id:"mario",  nombre:'Mario "el Tano" Fuccile', img:"img/mario.png", imgDetalle:"img/detalle/mario.png",
+    bio:'El tercero del trío de amigos que espera a Darío cada vez que el mundo se le complica.' },
+  { id:"romulo", nombre:"Rómulo", img:"img/romulo.png", imgDetalle:"img/detalle/romulo.png",
+    bio:"Nómada del desierto de Sinjar, criptógrafo, estratega militar entrenado por los británicos. La mente de un matemático... y reflejos letales." },
+  { id:"taladro", nombre:"Taladro", img:"img/taladro.png", imgDetalle:"img/detalle/taladro.png",
+    bio:"El interrogador de Schwarze Sonne. Nadie se resiste ante él, nadie sale ileso." },
+  { id:"dario", nombre:"Darío", img:"img/dario.png", imgDetalle:"img/detalle/dario.png",
+    bio:"Investigador forense de Forarg en Buenos Aires. Un caso cualquiera está a punto de arrastrarlo a algo mucho más grande." },
+  { id:"lauchita", nombre:"Lauchita", img:"img/lauchita.png", imgDetalle:"img/detalle/lauchita.png",
+    bio:'Hacker clandestino. Rasgos asiáticos, pero más argentino que el mate y las facturas. Puede hackear cualquier cosa — pero todo tiene un precio.' },
+  { id:"anna", nombre:"Anna", img:"img/anna.png", imgDetalle:"img/detalle/anna.png",
+    bio:"Una presencia inquietante en la fiesta del Hotel Adlon. Nadie imagina lo que está a punto de cambiar todo." },
+  { id:"marivea", nombre:"Marivea", img:"img/marivea.png", imgDetalle:"img/detalle/marivea.png",
+    bio:"La abuela de Jozef. Encendió en él el amor por la ciencia — y sabe defenderse mejor de lo que aparenta." },
+  { id:"pelusa", nombre:"Pelusa", img:"img/pelusa.png", imgDetalle:"img/detalle/pelusa.png",
+    bio:"El más veterano del escuadrón táctico. Ojos que ya vieron de todo." },
+  { id:"gardel", nombre:"Gardel", img:"img/gardel.png", imgDetalle:"img/detalle/gardel.png",
+    bio:"Compacto, fuerte, y el encargado de que las comunicaciones nunca fallen." },
+  { id:"truco", nombre:"Truco", img:"img/truco.png", imgDetalle:"img/detalle/truco.png",
+    bio:"El más joven del tridente táctico, pero con más experiencia de la que aparenta." },
+  { id:"carla", nombre:"Carla", img:"img/carla.png", imgDetalle:"img/detalle/carla.png",
+    bio:"La 'secretaria' de Aurora. Bajo la blusa de oficina, una operadora entrenada para el combate." },
+  { id:"nadia", nombre:"Nadia", img:"img/nadia.png", imgDetalle:"img/detalle/nadia.png",
+    bio:"Al frente de una organización que lleva décadas guardando secretos ajenos." },
+  { id:"santiago", nombre:"Santiago", img:"img/santiago.png", imgDetalle:"img/detalle/santiago.png",
+    bio:"Un joven científico brillante, con más preguntas sobre sí mismo de las que imagina." },
+  { id:"verner", nombre:"Verner", img:"img/verner.png", imgDetalle:"img/detalle/verner.png",
+    bio:"Autoridad, rigidez, y una decisión imposible pesándole cada segundo de esa noche." },
+  { id:"jozef", nombre:"Jozef", img:"img/jozef.png", imgDetalle:"img/detalle/jozef.png",
+    bio:"Científico en ascenso, con el corazón dividido entre el arte y la ciencia — y un descubrimiento que lo va a cambiar todo." },
+  { id:"elena", nombre:"Elena", img:"img/elena.png", imgDetalle:"img/detalle/elena.png",
+    bio:"La esposa de Jozef. Radiante, valiente, dispuesta a proteger lo que más quiere pase lo que pase." },
+  { id:"aurora", nombre:"Aurora", img:"img/aurora.png", imgDetalle:"img/detalle/aurora.png",
+    bio:"Diminuta, filosa, y guardiana de un secreto que lleva setenta años protegiendo." },
+  { id:"lenz", nombre:"Lenz", img:"img/lenz.png", imgDetalle:"img/detalle/lenz.png",
+    bio:"Dinero, poder, y ningún límite. Alguien a quien nadie debería subestimar." },
+  { id:"agnes", nombre:"Agnes", img:"img/agnes.png", imgDetalle:"img/detalle/agnes.png",
+    bio:"Hermosa, de voz angelical — y mucho más peligrosa de lo que parece." },
+  { id:"mariana", nombre:"Mariana", img:"img/mariana.png", imgDetalle:"img/detalle/mariana.png",
+    bio:"La topógrafa que sostiene la vida de Darío en medio de la tormenta." },
+];
+
+/* =========================================================
+   DATOS DE ESCENAS
+   ========================================================= */
+const escenas = [
+  { id:"esc1", img:"img/escenas/escena-01-motocicleta.jpg", alt:"La huida en la nieve" },
+  { id:"esc2", img:"img/escenas/escena-02.jpg", alt:"Escena 2" },
+  { id:"esc3", img:"img/escenas/escena-03.jpg", alt:"Escena 3" },
+  { id:"esc4", img:"img/escenas/escena-04.jpg", alt:"Escena 4" },
+];
+
+/* =========================================================
+   CARRUSEL DE PERSONAJES
+   ========================================================= */
+const charTrack  = document.getElementById('charTrack');
+const charDots   = document.getElementById('charDots');
+const charDetail = document.getElementById('charDetail');
+let activeIndex  = Math.floor(personajes.length / 2);
+
+function imgOrPlaceholder(src, label, extraClass){
+  return `<div class="img-slot" data-src="${src}" data-label="${label}"></div>`;
+}
+
+function buildCharCards(){
+  charTrack.innerHTML = personajes.map((p, i) => `
+    <div class="char-card" data-index="${i}">
+      <img src="${p.img}" alt="${p.nombre}"
+           onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',innerHTML:'SIN IMAGEN<br>${p.nombre.replace(/'/g,"\\'")}'}))">
+      <div class="cap">${p.nombre}</div>
+    </div>
+  `).join('');
+}
+
+function buildDots(){
+  charDots.innerHTML = personajes.map((_, i) =>
+    `<button class="dot" data-index="${i}" aria-label="Ir a personaje ${i+1}"></button>`
+  ).join('');
+}
+
+function renderDetail(){
+  const p = personajes[activeIndex];
+  charDetail.innerHTML = `
+    <div class="detail-photo">
+      <img src="${p.imgDetalle}" alt="${p.nombre}"
+           data-fallback="${p.img}"
+           onerror="handleDetailImgError(this)">
+    </div>
+    <div>
+      <div class="detail-name">${p.nombre}</div>
+      <div class="detail-bio">${p.bio}</div>
+    </div>
+  `;
+}
+
+// Si falta la foto "de detalle", probamos con la del carrusel.
+// Si tampoco existe esa, recién ahí mostramos el marcador "Sin imagen".
+function handleDetailImgError(img){
+  const fallback = img.dataset.fallback;
+  if(fallback && img.src.indexOf(fallback) === -1){
+    img.src = fallback;
+    img.removeAttribute('data-fallback');
+  } else {
+    img.replaceWith(Object.assign(document.createElement('div'), {
+      className:'ph', textContent:'Sin imagen todavía'
+    }));
+  }
+}
+
+function updateActiveStyles(){
+  [...charTrack.children].forEach((el, i) => {
+    el.classList.toggle('active', i === activeIndex);
+  });
+  [...charDots.children].forEach((el, i) => {
+    el.classList.toggle('active', i === activeIndex);
+  });
+}
+
+function centerActiveCard(){
+  const card = charTrack.children[activeIndex];
+  if(!card) return;
+  const wrapWidth = charTrack.parentElement.offsetWidth;
+  const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+  const offset = wrapWidth / 2 - cardCenter;
+  charTrack.style.transform = `translateX(${offset}px)`;
+}
+
+function setActive(i){
+  activeIndex = (i + personajes.length) % personajes.length;
+  updateActiveStyles();
+  centerActiveCard();
+  renderDetail();
+}
+
+buildCharCards();
+buildDots();
+setActive(activeIndex);
+
+document.getElementById('charPrev').addEventListener('click', () => setActive(activeIndex - 1));
+document.getElementById('charNext').addEventListener('click', () => setActive(activeIndex + 1));
+charTrack.addEventListener('click', (e) => {
+  const card = e.target.closest('.char-card');
+  if(card) setActive(Number(card.dataset.index));
+});
+charDots.addEventListener('click', (e) => {
+  const dot = e.target.closest('.dot');
+  if(dot) setActive(Number(dot.dataset.index));
+});
+window.addEventListener('resize', centerActiveCard);
+
+/* =========================================================
+   CARRUSEL DE ESCENAS (solo flechas, sin blur)
+   ========================================================= */
+const sceneTrack = document.getElementById('sceneTrack');
+sceneTrack.innerHTML = escenas.map(s => `
+  <div class="scene-card">
+    <img src="${s.img}" alt="${s.alt}"
+         onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'${s.alt}\\n(sin imagen todavía)'}))">
+  </div>
+`).join('');
+
+let sceneScroll = 0;
+function shiftScenes(dir){
+  const card = sceneTrack.children[0];
+  const step = card.offsetWidth + 14;
+  const maxScroll = -(step * (escenas.length - 1));
+  sceneScroll = Math.max(maxScroll, Math.min(0, sceneScroll + dir * step * -1));
+  sceneTrack.style.transform = `translateX(${sceneScroll}px)`;
+}
+document.getElementById('scenePrev').addEventListener('click', () => shiftScenes(-1));
+document.getElementById('sceneNext').addEventListener('click', () => shiftScenes(1));
+</script>
+
+</body>
+</html>
