@@ -455,7 +455,6 @@ function buildCharCards(){
     <div class="char-card" data-index="${i}">
       <img src="${p.img}" alt="${p.nombre}"
            onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',innerHTML:'SIN IMAGEN<br>${p.nombre.replace(/'/g,"\\'")}'}))">
-      <div class="cap">${p.nombre}</div>
     </div>
   `).join('');
 }
