@@ -136,6 +136,12 @@
 
   /* ---------- SECTION HEADS ---------- */
   section{padding:70px 0;}
+
+  /* Espacio extra arriba de cada título (encima de los 70px normales).
+     Cambiá el número de px para ajustar cada uno por separado. */
+  #seccion-personajes{padding-top:140px;}
+  #seccion-escenas{padding-top:140px;}
+  #seccion-libro{padding-top:140px;}
   .section-title{
     font-family:'Anton', sans-serif; font-weight:400;
     font-size:clamp(1.5rem, 3.4vw, 2.1rem);
@@ -333,7 +339,7 @@
 <hr class="rule">
 
 <!-- PERSONAJES -->
-<section class="wrap">
+<section class="wrap" id="seccion-personajes">
   <h2 class="section-title">Guía de personajes</h2>
 
   <div class="carousel-shell">
@@ -352,7 +358,7 @@
 <hr class="rule">
 
 <!-- ESCENAS -->
-<section class="wrap">
+<section class="wrap" id="seccion-escenas">
   <h2 class="section-title">Escenas</h2>
   <div class="carousel-shell">
     <button class="arrow left" id="scenePrev" aria-label="Escena anterior">‹</button>
@@ -366,7 +372,7 @@
 <hr class="rule">
 
 <!-- TIENDAS -->
-<section class="wrap" style="text-align:center;">
+<section class="wrap" style="text-align:center;" id="seccion-libro">
   <h2 class="section-title">Conseguí el libro</h2>
   <div class="retailer-row">
     <a href="https://www.amazon.com/dp/B0HD7V7B7S" target="_blank" rel="noopener">Amazon</a>
