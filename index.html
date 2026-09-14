@@ -518,7 +518,7 @@ function imgOrPlaceholder(src, label, extraClass){
 function buildCharCards(){
   charTrack.innerHTML = personajes.map((p, i) => `
     <div class="char-card" data-index="${i}">
-      <img src="${p.img}" alt="${p.nombre}" loading="lazy" decoding="async"
+      <img src="${p.img}" alt="${p.nombre}" width="400" height="600" decoding="async"
            onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',innerHTML:'SIN IMAGEN<br>${p.nombre.replace(/'/g,"\\'")}'}))">
     </div>
   `).join('');
@@ -534,7 +534,7 @@ function renderDetail(){
   const p = personajes[activeIndex];
   charDetail.innerHTML = `
     <div class="detail-photo">
-      <img src="${p.imgDetalle}" alt="${p.nombre}"
+      <img src="${p.imgDetalle}" alt="${p.nombre}" width="400" height="600"
            data-fallback="${p.img}"
            onerror="handleDetailImgError(this)">
     </div>
@@ -606,7 +606,7 @@ window.addEventListener('resize', centerActiveCard);
 const sceneTrack = document.getElementById('sceneTrack');
 sceneTrack.innerHTML = escenas.map(s => `
   <div class="scene-card">
-    <img src="${s.img}" alt="${s.alt}" loading="lazy" decoding="async"
+    <img src="${s.img}" alt="${s.alt}" width="400" height="600" decoding="async"
          onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'${s.alt}\\n(sin imagen todavía)'}))">
   </div>
 `).join('');
@@ -628,7 +628,7 @@ document.getElementById('sceneNext').addEventListener('click', () => shiftScenes
 const paisajeTrack = document.getElementById('paisajeTrack');
 paisajeTrack.innerHTML = paisajes.map(p => `
   <div class="scene-card">
-    <img src="${p.img}" alt="${p.alt}" loading="lazy" decoding="async"
+    <img src="${p.img}" alt="${p.alt}" width="400" height="600" decoding="async"
          onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'${p.alt}\\n(sin imagen todavía)'}))">
   </div>
 `).join('');
