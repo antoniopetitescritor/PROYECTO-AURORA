@@ -141,6 +141,7 @@
      Cambiá el número de px para ajustar cada uno por separado. */
   #seccion-personajes{padding-top:50px;}
   #seccion-escenas{padding-top:50px;}
+  #seccion-paisajes{padding-top:50px;}
   #seccion-libro{padding-top:50px;}
   .section-title{
     font-family:'Anton', sans-serif; font-weight:400;
@@ -252,7 +253,7 @@
     .detail-photo{max-width:220px; margin:0 auto;}
   }
 
-  /* ---------- SCENES CAROUSEL ---------- */
+  /* ---------- SCENES / PAISAJES CAROUSEL ---------- */
   .scene-card{
     flex:0 0 auto; width:280px; aspect-ratio:2/3;
     border-radius:4px; overflow:hidden; background:var(--panel);
@@ -371,6 +372,20 @@
 
 <hr class="rule">
 
+<!-- PAISAJES -->
+<section class="wrap" id="seccion-paisajes">
+  <h2 class="section-title">Paisajes</h2>
+  <div class="carousel-shell">
+    <button class="arrow left" id="paisajePrev" aria-label="Paisaje anterior">‹</button>
+    <button class="arrow right" id="paisajeNext" aria-label="Paisaje siguiente">›</button>
+    <div class="carousel-track-wrap">
+      <div class="carousel-track" id="paisajeTrack"></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
 <!-- TIENDAS -->
 <section class="wrap" style="text-align:center;" id="seccion-libro">
   <h2 class="section-title">Conseguí el libro</h2>
@@ -469,7 +484,24 @@ const escenas = [
   { id:"esc11", img:"img/escenas/escena-11.jpg", alt:"Escena 11" },
   { id:"esc12", img:"img/escenas/escena-12.jpg", alt:"Escena 12" },
   { id:"esc13", img:"img/escenas/escena-13.jpg", alt:"Escena 13" },
-  { id:"esc14", img:"img/escenas/escena-14.jpg", alt:"Escena 14" } ];
+  { id:"esc14", img:"img/escenas/escena-14.jpg", alt:"Escena 14" },
+];
+
+/* =========================================================
+   DATOS DE PAISAJES
+   Mismo sistema que Escenas: para sumar uno nuevo, agregá una
+   línea siguiendo el mismo patrón y subí la foto a
+   img/paisajes/ con el nombre exacto que pongas acá.
+   ========================================================= */
+const paisajes = [
+  { id:"pai1", img:"img/paisajes/paisaje-01.jpg", alt:"Paisaje 1" },
+  { id:"pai2", img:"img/paisajes/paisaje-02.jpg", alt:"Paisaje 2" },
+  { id:"pai3", img:"img/paisajes/paisaje-03.jpg", alt:"Paisaje 3" },
+  { id:"pai4", img:"img/paisajes/paisaje-04.jpg", alt:"Paisaje 4" },
+  { id:"pai5", img:"img/paisajes/paisaje-05.jpg", alt:"Paisaje 5" },
+  { id:"pai6", img:"img/paisajes/paisaje-06.jpg", alt:"Paisaje 6" },
+  { id:"pai7", img:"img/paisajes/paisaje-07.jpg", alt:"Paisaje 7" },
+];
 
 /* =========================================================
    CARRUSEL DE PERSONAJES
@@ -589,6 +621,28 @@ function shiftScenes(dir){
 }
 document.getElementById('scenePrev').addEventListener('click', () => shiftScenes(-1));
 document.getElementById('sceneNext').addEventListener('click', () => shiftScenes(1));
+
+/* =========================================================
+   CARRUSEL DE PAISAJES (mismo sistema que Escenas)
+   ========================================================= */
+const paisajeTrack = document.getElementById('paisajeTrack');
+paisajeTrack.innerHTML = paisajes.map(p => `
+  <div class="scene-card">
+    <img src="${p.img}" alt="${p.alt}" loading="lazy" decoding="async"
+         onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'${p.alt}\\n(sin imagen todavía)'}))">
+  </div>
+`).join('');
+
+let paisajeScroll = 0;
+function shiftPaisajes(dir){
+  const card = paisajeTrack.children[0];
+  const step = card.offsetWidth + 14;
+  const maxScroll = -(step * (paisajes.length - 1));
+  paisajeScroll = Math.max(maxScroll, Math.min(0, paisajeScroll + dir * step * -1));
+  paisajeTrack.style.transform = `translateX(${paisajeScroll}px)`;
+}
+document.getElementById('paisajePrev').addEventListener('click', () => shiftPaisajes(-1));
+document.getElementById('paisajeNext').addEventListener('click', () => shiftPaisajes(1));
 </script>
 
 </body>
