@@ -143,6 +143,7 @@
   #seccion-escenas{padding-top:50px;}
   #seccion-paisajes{padding-top:50px;}
   #seccion-libro{padding-top:50px;}
+  #seccion-sinopsis{padding-top:50px;}
   .section-title{
     font-family:'Anton', sans-serif; font-weight:400;
     font-size:clamp(1.5rem, 3.4vw, 2.1rem);
@@ -151,6 +152,19 @@
     margin-bottom:60px;
   }
   hr.rule{border:none; border-top:1px solid var(--line); max-width:1180px; margin:0 auto;}
+
+  /* ---------- SINOPSIS ---------- */
+  .sinopsis-text{
+    max-width:70ch;
+    margin:0 auto;
+    color:var(--ink-dim);
+    font-size:16px;
+    font-weight:400;
+    line-height:1.45;
+    text-align:left;
+  }
+  .sinopsis-text p{margin-bottom:16px;}
+  .sinopsis-text p:last-child{margin-bottom:0;}
 
   /* ---------- CHARACTER CAROUSEL ---------- */
   .carousel-shell{position:relative;}
@@ -339,6 +353,21 @@
 
 <hr class="rule">
 
+<!-- SINOPSIS -->
+<section class="wrap" id="seccion-sinopsis">
+  <h2 class="section-title">Sinopsis</h2>
+  <div class="sinopsis-text">
+    <p>Berlín, 1945. Argentina, 1980. Buenos Aires, 2014.</p>
+    <p>Tres épocas, un secreto capaz de reescribir la historia de la humanidad.</p>
+    <p>En los últimos días del Tercer Reich, un científico custodia la clave de un descubrimiento inimaginable en un maletín. Perseguido por la sociedad secreta Schwarze Sonne, su destino se entrelaza con conspiraciones que atraviesan décadas y continentes.</p>
+    <p>Años después, Darío, un investigador de inteligencia con más calle que paciencia, se ve arrastrado a un crimen inexplicable, un cuadro sin firma y una anciana que custodia un secreto monumental.</p>
+    <p>Desde los Alpes bávaros hasta la Antártida, desde los canales del delta hasta las entrañas de la tierra, pasado y presente colisionan en una persecución feroz.</p>
+    <p>Y en el centro de todo, una pregunta que no tiene época: ¿hay secretos que la humanidad debería conocer?</p>
+  </div>
+</section>
+
+<hr class="rule">
+
 <!-- PERSONAJES -->
 <section class="wrap" id="seccion-personajes">
   <h2 class="section-title">Guía de personajes</h2>
@@ -485,8 +514,6 @@ const escenas = [
   { id:"esc12", img:"img/escenas/escena-12.jpg", alt:"Escena 12" },
   { id:"esc13", img:"img/escenas/escena-13.jpg", alt:"Escena 13" },
   { id:"esc14", img:"img/escenas/escena-14.jpg", alt:"Escena 14" },
-  { id:"esc15", img:"img/escenas/escena-15.jpg", alt:"Escena 15" },
-  { id:"esc16", img:"img/escenas/escena-16.jpg", alt:"Escena 16" },
 ];
 
 /* =========================================================
