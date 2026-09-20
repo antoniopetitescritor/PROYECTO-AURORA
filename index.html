@@ -182,41 +182,6 @@
   }
   .trailer-btn:hover{background:#f2c73a;}
 
-  /* ---------- MODAL DEL TRAILER ---------- */
-  .trailer-modal{
-    display:none;
-    position:fixed; inset:0; z-index:50;
-    background:rgba(0,0,0,0.9);
-    align-items:center; justify-content:center;
-    padding:24px;
-  }
-  .trailer-modal.open{display:flex;}
-  .trailer-modal-inner{
-    position:relative;
-    width:100%;
-    max-width:420px;
-  }
-  .trailer-close{
-    position:absolute; top:-44px; right:0;
-    width:36px; height:36px; border-radius:50%;
-    background:rgba(242,239,233,0.12);
-    color:var(--ink);
-    border:none;
-    font-size:16px;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .trailer-video-wrap{
-    width:100%;
-    aspect-ratio:9/16;
-    max-height:85vh;
-    background:#000;
-    border-radius:6px;
-    overflow:hidden;
-  }
-  .trailer-video-wrap iframe{
-    width:100%; height:100%; border:0; display:block;
-  }
-
   /* ---------- CHARACTER CAROUSEL ---------- */
   .carousel-shell{position:relative;}
   .carousel-track-wrap{overflow:hidden; padding:10px 0;}
@@ -419,17 +384,9 @@
        envolver el botón en un <a href="LINK_DE_YOUTUBE" target="_blank">
        (o armar el modal que se abre en la página, según lo que prefieras). -->
   <div class="trailer-btn-wrap">
-    <button class="trailer-btn" id="trailerBtn" type="button">Ver trailer</button>
+    <a class="trailer-btn" href="https://www.instagram.com/p/DdfD1Ahq11a/" target="_blank" rel="noopener">Ver trailer</a>
   </div>
 </section>
-
-<!-- MODAL DEL TRAILER -->
-<div class="trailer-modal" id="trailerModal">
-  <div class="trailer-modal-inner">
-    <button class="trailer-close" id="trailerClose" aria-label="Cerrar trailer">✕</button>
-    <div class="trailer-video-wrap" id="trailerVideoWrap"></div>
-  </div>
-</div>
 
 <hr class="rule">
 
@@ -737,40 +694,6 @@ function shiftPaisajes(dir){
 }
 document.getElementById('paisajePrev').addEventListener('click', () => shiftPaisajes(-1));
 document.getElementById('paisajeNext').addEventListener('click', () => shiftPaisajes(1));
-
-/* =========================================================
-   MODAL DEL TRAILER
-   El video de YouTube NO se carga hasta que el usuario toca
-   "Ver trailer" — recién ahí se crea el iframe. Al cerrar, se
-   destruye el iframe para que el video pare y no siga sonando.
-   ========================================================= */
-const TRAILER_YOUTUBE_ID = "VbrzV9qEBjI";
-const trailerBtn      = document.getElementById('trailerBtn');
-const trailerModal     = document.getElementById('trailerModal');
-const trailerClose     = document.getElementById('trailerClose');
-const trailerVideoWrap = document.getElementById('trailerVideoWrap');
-
-function openTrailer(){
-  trailerVideoWrap.innerHTML = `
-    <iframe
-      src="https://www.youtube-nocookie.com/embed/${TRAILER_YOUTUBE_ID}?autoplay=1&playsinline=1&rel=0"
-      title="Trailer — Proyecto Aurora"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>`;
-  trailerModal.classList.add('open');
-}
-
-function closeTrailer(){
-  trailerModal.classList.remove('open');
-  trailerVideoWrap.innerHTML = '';
-}
-
-trailerBtn.addEventListener('click', openTrailer);
-trailerClose.addEventListener('click', closeTrailer);
-trailerModal.addEventListener('click', (e) => {
-  if(e.target === trailerModal) closeTrailer();
-});
 </script>
 
 </body>
