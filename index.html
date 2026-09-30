@@ -1,700 +1,591 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Proyecto Aurora — Antonio Petit</title>
 <meta name="google-site-verification" content="FAQWwwP9y9V56WhT-IDpvPYPbnShL72PMZRdc9Lr1p8" />
 <meta name="description" content="Proyecto Aurora, de Antonio Petit: un thriller que atraviesa Berlín en 1945, La Cumbrecita en 1980 y Buenos Aires en 2014. Un descubrimiento capaz de reescribir la historia de la humanidad.">
 <meta name="keywords" content="Proyecto Aurora, Antonio Petit, thriller, novela, Editorial Dunken, libro argentino, thriller histórico">
 <link rel="canonical" href="https://antoniopetitescritor.github.io/PROYECTO-AURORA/">
-
-<!-- Vista previa al compartir en WhatsApp, Facebook, etc. -->
+<meta name="theme-color" content="#0f151b">
+<link rel="icon" href="img/logo.png">
 <meta property="og:type" content="book">
 <meta property="og:title" content="Proyecto Aurora — Un thriller apasionante">
 <meta property="og:description" content="Un descubrimiento capaz de reescribir la historia de la humanidad. Berlín 1945, La Cumbrecita 1980, Buenos Aires 2014.">
-<meta property="og:image" content="https://antoniopetitescritor.github.io/PROYECTO-AURORA/img/hero.png">
+<meta property="og:image" content="https://antoniopetitescritor.github.io/PROYECTO-AURORA/img/hero.jpg">
 <meta property="og:url" content="https://antoniopetitescritor.github.io/PROYECTO-AURORA/">
 <meta property="og:locale" content="es_AR">
-
-<!-- Vista previa al compartir en X/Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Proyecto Aurora — Un thriller apasionante">
 <meta name="twitter:description" content="Un descubrimiento capaz de reescribir la historia de la humanidad. Berlín 1945, La Cumbrecita 1980, Buenos Aires 2014.">
-<meta name="twitter:image" content="https://antoniopetitescritor.github.io/PROYECTO-AURORA/img/hero.png">
+<meta name="twitter:image" content="https://antoniopetitescritor.github.io/PROYECTO-AURORA/img/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:        #0b0b0c;
-    --bg-2:      #131315;
-    --panel:     #1a1a1d;
-    --ink:       #f2efe9;
-    --ink-dim:   #a7a39c;
-    --blood:     #a52734;
-    --line:      rgba(242,239,233,0.10);
-  }
+:root{
+  --night:#0c1621;
+  --night-2:#122233;
+  --ice:#d9e6ea;
+  --ice-dim:#8ea3ad;
+  --aurora-g:#3fd5a0;
+  --aurora-v:#7a5cff;
+  --manila:#d8c79b;
+  --manila-ink:#2b2418;
+  --stamp:#b3261e;
+  --amber:#e3a354;
+  --display:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --type:"Courier Prime", "Courier New", Courier, monospace;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --night:#0c1621; --ice:#d9e6ea; } }
+:root[data-theme="dark"]{ --night:#0c1621; --ice:#d9e6ea; }
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);background:var(--night)}
+body{margin:0;background:var(--night);color:var(--ice);font-family:var(--type);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--aurora-g);outline-offset:3px}
+.wrap{width:min(1080px,100% - 2.5rem);margin-inline:auto}
 
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Oswald', sans-serif;
-    line-height:1.5;
-  }
-  @media (prefers-reduced-motion: reduce){
-    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
-  }
-  a{color:inherit;}
-  button{font-family:inherit; cursor:pointer;}
-  button:focus-visible, a:focus-visible{outline:2px solid var(--blood); outline-offset:3px;}
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:grid;align-content:end;overflow:hidden;padding-block:6rem 4rem;isolation:isolate}
+.sky{position:absolute;inset:0;z-index:-2;
+  background:
+    radial-gradient(1px 1px at 12% 18%,#fff8 50%,transparent),
+    radial-gradient(1px 1px at 72% 12%,#fff9 50%,transparent),
+    radial-gradient(1.5px 1.5px at 40% 30%,#fffa 50%,transparent),
+    radial-gradient(1px 1px at 86% 38%,#fff7 50%,transparent),
+    radial-gradient(1px 1px at 25% 48%,#fff6 50%,transparent),
+    radial-gradient(1px 1px at 58% 22%,#fff8 50%,transparent),
+    radial-gradient(1px 1px at 93% 8%,#fff9 50%,transparent),
+    linear-gradient(#050b12, var(--night) 70%);}
+.aurora{position:absolute;z-index:-1;inset:-20% -10% 30%;filter:blur(60px);opacity:.75;pointer-events:none}
+.aurora span{position:absolute;border-radius:50%;mix-blend-mode:screen}
+.aurora .a1{width:70%;height:38%;left:5%;top:28%;background:var(--aurora-g);transform:rotate(-12deg);animation:drift 18s ease-in-out infinite alternate}
+.aurora .a2{width:55%;height:30%;left:40%;top:18%;background:var(--aurora-v);transform:rotate(8deg);animation:drift 22s ease-in-out infinite alternate-reverse}
+.aurora .a3{width:40%;height:22%;left:25%;top:44%;background:#2aa7c9;animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(6%,-8%) rotate(4deg) scaleX(1.2)}}
+.ridge{position:absolute;left:0;right:0;bottom:0;height:34%;z-index:-1;
+  background:var(--night);
+  clip-path:polygon(0 60%,8% 42%,15% 55%,24% 30%,33% 50%,41% 38%,50% 58%,60% 26%,68% 48%,77% 35%,86% 52%,93% 40%,100% 50%,100% 100%,0 100%)}
+.author{font-size:.95rem;color:var(--ice-dim);margin:0 0 .5rem;letter-spacing:.02em}
+.title{font-family:var(--display);font-weight:400;font-size:clamp(3.4rem,13vw,10.5rem);line-height:.86;margin:0;letter-spacing:-.02em}
+.title em{display:block;font-style:italic;padding-left:.55em}
+.question{font-family:var(--display);font-style:italic;font-size:clamp(1.25rem,2.6vw,1.75rem);max-width:30ch;margin:2rem 0 2.25rem;color:var(--ice)}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{font:inherit;font-weight:700;cursor:pointer;display:inline-block;text-decoration:none;padding:.85rem 1.4rem;border:1px solid var(--ice);background:var(--ice);color:var(--night);border-radius:2px}
+.btn.ghost{background:transparent;color:var(--ice)}
+.btn:hover{background:var(--aurora-g);border-color:var(--aurora-g);color:var(--night)}
 
-  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+/* ---------- ERAS ---------- */
+.era{position:relative;padding-block:clamp(5rem,12vw,9rem);overflow:hidden}
+.era .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(1.5rem,5vw,4rem);align-items:end}
+.era .year{font-family:var(--display);font-size:clamp(5rem,17vw,13rem);line-height:.8;margin:0}
+.era .place{margin:.75rem 0 0;font-size:1rem}
+.era p.body{margin:0;max-width:44ch;font-size:1.1rem}
+.e1945{background:#1b1b1a;color:#e4e1d8}
+.e1945::before{content:"";position:absolute;inset:0;opacity:.18;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.e1945 .year{color:#9a978e}
+.e1980{background:#3a2518;color:#f3dcc0}
+.e1980 .year{color:var(--amber)}
+.e1980::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 20% 0%,#e3a35433,transparent 60%)}
+.e2014{background:#0f2233;color:#dcebf5}
+.e2014 .year{color:#7fb3d9}
+.e2014::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,#ffffff06 0 1px,transparent 1px 4px)}
 
-  /* ---------- HERO ---------- */
-  .hero{
-    position:relative;
-    padding:0;
-    text-align:center;
-    overflow:hidden;
-    background:var(--bg);
-  }
-  .hero-banner{
-    display:block;
-    width:100%;
-    height:auto;
-    aspect-ratio:1794/974;
-    object-fit:cover;
-  }
-  .hero-inner{
-    position:relative; z-index:1;
-    padding:120px 24px 70px;
-    background:
-      radial-gradient(ellipse 700px 500px at 50% -5%, rgba(165,39,52,0.10), transparent 65%),
-      var(--bg);
-  }
-  .emblem{
-    position:absolute; top:-140px; left:50%; transform:translateX(-50%);
-    width:520px; height:520px; opacity:0.16;
-    background:
-      repeating-conic-gradient(from 0deg, rgba(242,239,233,0.9) 0deg 4deg, transparent 4deg 30deg);
-    border-radius:50%;
-    -webkit-mask:radial-gradient(circle, black 55%, transparent 78%);
-            mask:radial-gradient(circle, black 55%, transparent 78%);
-  }
-  .kicker{
-    font-size:12px; letter-spacing:0.3em; text-transform:uppercase;
-    color:var(--blood); margin-bottom:18px;
-  }
-  .brand-row{
-    display:flex; align-items:center; justify-content:center; gap:34px; flex-wrap:wrap;
-  }
-  h1.brand{
-    font-family:'Anton', sans-serif;
-    font-weight:400;
-    line-height:0.86;
-    letter-spacing:0.01em;
-    text-align:left;
-  }
-  h1.brand .l1{display:block; font-size:clamp(2.2rem, 5vw, 3.1rem); color:var(--ink);}
-  h1.brand .l2{display:block; font-size:clamp(3.6rem, 9vw, 6.4rem); color:var(--ink);}
-  .tagline{
-    margin-top:14px;
-    font-size:14px; letter-spacing:0.16em; text-transform:uppercase;
-    color:var(--ink-dim);
-  }
-  .book-cover{
-    width:172px; aspect-ratio:2/3;
-    background:linear-gradient(160deg,#2a1414,#0d0b0c 60%);
-    border:1px solid rgba(242,239,233,0.14);
-    border-radius:3px;
-    transform:rotate(4deg);
-    box-shadow:0 30px 60px -18px rgba(0,0,0,0.7);
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    text-align:center; padding:14px;
-    position:relative;
-    overflow:hidden;
-  }
-  .book-cover img{
-    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-  }
-  .book-cover.ph-cover::after{
-    content:"REEMPLAZAR POR\A TAPA REAL\A (img/tapa-libro.png)";
-    white-space:pre;
-    position:absolute; inset:0;
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Oswald', sans-serif; font-size:9px; letter-spacing:0.08em;
-    color:rgba(242,239,233,0.35);
-    background:rgba(0,0,0,0.15);
-  }
-  .book-cover .bt{font-family:'Anton'; font-size:15px; color:var(--ink); letter-spacing:0.02em; position:relative; z-index:1;}
-  .book-cover .bt2{font-family:'Anton'; font-size:21px; color:var(--ink); margin-top:2px; position:relative; z-index:1;}
-  .book-cover:not(.ph-cover) .bt,
-  .book-cover:not(.ph-cover) .bt2{display:none;}
+/* ---------- SECTION HEADS ---------- */
+.sec{padding-block:clamp(4.5rem,10vw,7.5rem)}
+.sec h2{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,6vw,3.8rem);line-height:1;margin:0 0 .75rem}
+.sec .lede{max-width:52ch;color:var(--ice-dim);margin:0 0 2.5rem}
 
-  /* ---------- SECTION HEADS ---------- */
-  section{padding:70px 0;}
+/* ---------- MAP ---------- */
+.mapgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:2rem;align-items:start}
+.map{width:100%;height:auto;display:block;border:1px solid #ffffff14}
+.map .grat{stroke:#ffffff10;stroke-width:.25}
+.map .eq{stroke:#ffffff26;stroke-width:.3;stroke-dasharray:1 1}
+.map .route{fill:none;stroke:var(--aurora-g);stroke-width:.45;stroke-dasharray:1.4 1.2;opacity:.6}
+.map .pt circle.dot{fill:var(--ice);transition:r .2s}
+.map .pt text{fill:var(--ice-dim);font-family:var(--type);font-size:3.4px}
+.map .pt.on circle.dot{fill:var(--aurora-g)}
+.map .pt.on text{fill:var(--ice)}
+.map .pt{cursor:pointer}
+.places{list-style:none;margin:0;padding:0;border-top:1px solid #ffffff1c}
+.places button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;width:100%;padding:.9rem .25rem;border-bottom:1px solid #ffffff1c}
+.places button:focus-visible{outline:2px solid var(--aurora-g)}
+.places button span:last-child{color:var(--ice-dim)}
+.places button[aria-pressed="true"]{color:var(--aurora-g)}
+.placenote{margin-top:1.5rem;min-height:6.5rem;font-family:var(--display);font-style:italic;font-size:1.3rem;line-height:1.4}
 
-  /* Espacio extra arriba de cada título (encima de los 70px normales).
-     Cambiá el número de px para ajustar cada uno por separado. */
-  #seccion-personajes{padding-top:50px;}
-  #seccion-escenas{padding-top:50px;}
-  #seccion-paisajes{padding-top:50px;}
-  #seccion-libro{padding-top:50px;}
-  #seccion-sinopsis{padding-top:50px; padding-bottom:120px;}
-  .section-title{
-    font-family:'Anton', sans-serif; font-weight:400;
-    font-size:clamp(1.5rem, 3.4vw, 2.1rem);
-    letter-spacing:0.06em;
-    text-align:center;
-    margin-bottom:60px;
-  }
-  hr.rule{border:none; border-top:1px solid var(--line); max-width:1180px; margin:0 auto;}
+/* ---------- DOSSIER ---------- */
+.dossier{background:#161e24}
+.files{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem}
+.file{position:relative;background:var(--manila);color:var(--manila-ink);padding:1.25rem 1.25rem 1.5rem;border-radius:0 6px 3px 3px;transform:rotate(var(--r,0deg));box-shadow:0 12px 24px -12px #000c}
+.file::before{content:"";position:absolute;top:-14px;left:0;width:42%;height:15px;background:var(--manila);border-radius:6px 6px 0 0}
+.file:nth-child(2){--r:.8deg}.file:nth-child(3){--r:-.6deg}.file:nth-child(4){--r:.5deg}.file:nth-child(1){--r:-.4deg}
+.photo{aspect-ratio:4/5;background:#2b2418;display:grid;place-items:center;margin-bottom:1rem;position:relative;overflow:hidden}
+.photo svg{width:62%;opacity:.55}
+.stamp{position:absolute;right:.6rem;bottom:1rem;border:2px solid var(--stamp);color:var(--stamp);font-weight:700;padding:.1rem .45rem;transform:rotate(-9deg);font-size:.85rem;opacity:.9;background:#d8c79b22}
+.file h3{font-family:var(--display);font-size:1.6rem;margin:0;line-height:1.1;font-weight:700}
+.file .alias{margin:.2rem 0 .6rem;font-style:italic;font-size:.95rem}
+.file p{margin:0;font-size:.98rem;line-height:1.5}
+.redact{background:var(--manila-ink);color:transparent;border-radius:1px;user-select:none}
 
-  /* ---------- SINOPSIS ---------- */
-  .sinopsis-text{
-    max-width:70ch;
-    margin:0 auto;
-    color:var(--ink-dim);
-    font-size:16px;
-    font-weight:400;
-    line-height:1.45;
-    text-align:left;
-  }
-  .sinopsis-text p{margin-bottom:16px;}
-  .sinopsis-text p:last-child{margin-bottom:0;}
+/* ---------- TRAILER ---------- */
+.trailer{aspect-ratio:16/9;width:100%;border:1px solid #ffffff22;display:grid;place-items:center;text-align:center;background:
+  linear-gradient(135deg,#0f2233,#1b1b1a 55%,#3a2518)}
+.trailer p{margin:0;color:var(--ice-dim)}
+.trailer strong{display:block;font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,4vw,2.6rem);color:var(--ice);margin-bottom:.4rem}
 
-  .trailer-btn-wrap{text-align:center; margin-top:36px;}
-  .trailer-btn{
-    display:inline-block;
-    background:#e8b923;
-    color:#0b0b0c;
-    font-family:'Oswald', sans-serif;
-    font-weight:700;
-    font-size:15px;
-    letter-spacing:0.04em;
-    text-transform:uppercase;
-    padding:16px 34px;
-    border-radius:50px;
-    border:none;
-  }
-  .trailer-btn:hover{background:#f2c73a;}
+/* ---------- CASE PUZZLE ---------- */
+.case{background:#1b1b1a}
+.casebox{max-width:640px;margin-inline:auto;text-align:center}
+.briefcase{position:relative;margin:2.5rem auto 1.5rem;width:min(460px,100%);padding:2.25rem 1.25rem 1.75rem;background:linear-gradient(#4a3526,#35251a);border-radius:10px;box-shadow:inset 0 2px 0 #ffffff14,0 20px 40px -20px #000}
+.briefcase::before{content:"";position:absolute;left:50%;top:-26px;width:120px;height:30px;transform:translateX(-50%);border:8px solid #35251a;border-bottom:none;border-radius:14px 14px 0 0}
+.dials{display:flex;justify-content:center;gap:.6rem}
+.dial{display:grid;grid-template-rows:auto auto auto;justify-items:center;background:#1a120c;border-radius:6px;padding:.3rem .2rem}
+.dial button{all:unset;cursor:pointer;width:44px;height:30px;display:grid;place-items:center;color:#c9a86a;font-size:.9rem}
+.dial button:focus-visible{outline:2px solid var(--aurora-g)}
+.dial output{font-family:var(--display);font-size:2.4rem;line-height:1;width:44px;color:#f0dfb8;background:linear-gradient(#0008,#0000 30%,#0000 70%,#0008);padding:.2rem 0}
+.clue{font-family:var(--display);font-style:italic;font-size:1.3rem;max-width:36ch;margin:0 auto}
+.status{min-height:1.6em;margin:1rem 0 0;color:#e4a39d}
+.hint{color:var(--ice-dim);font-size:.95rem;margin:.25rem 0 0}
+.reveal{display:none;text-align:left;background:var(--manila);color:var(--manila-ink);padding:1.75rem;margin-top:2rem;border-radius:3px}
+.reveal.open{display:block;animation:unfold .6s ease-out}
+@keyframes unfold{from{opacity:0;transform:translateY(-12px)}}
+.reveal h3{font-family:var(--display);font-size:1.8rem;margin:0 0 .75rem}
+.reveal p{margin:0 0 1rem}
+.reveal .placeholder{border:1px dashed #2b241899;padding:1rem;font-style:italic}
+.briefcase.opened{animation:shake .4s}
+@keyframes shake{25%{transform:rotate(-1.5deg)}75%{transform:rotate(1.5deg)}}
 
-  /* ---------- CHARACTER CAROUSEL ---------- */
-  .carousel-shell{position:relative;}
-  .carousel-track-wrap{overflow:hidden; padding:10px 0;}
-  .carousel-track{
-    display:flex; gap:14px;
-    transition:transform 0.45s cubic-bezier(.2,.8,.25,1);
-    will-change:transform;
-  }
-  .char-card{
-    flex:0 0 auto;
-    width:220px;
-    aspect-ratio:2/3;
-    position:relative;
-    border-radius:4px;
-    overflow:hidden;
-    background:var(--panel);
-    cursor:pointer;
-    filter:blur(3px) brightness(0.55);
-    transform:scale(0.92);
-    transition:filter 0.35s ease, transform 0.35s ease;
-    flex-shrink:0;
-  }
-  .char-card.active{
-    filter:blur(0) brightness(1);
-    transform:scale(1.04);
-  }
-  .char-card img{
-    width:100%; height:100%; object-fit:cover; display:block;
-  }
-  .char-card .ph{
-    width:100%; height:100%;
-    display:flex; align-items:center; justify-content:center;
-    background:repeating-linear-gradient(135deg, #202023, #202023 10px, #1a1a1d 10px, #1a1a1d 20px);
-    color:var(--ink-dim); font-size:11px; letter-spacing:0.08em; text-align:center; padding:14px;
-  }
-  .char-card .cap{
-    position:absolute; left:0; right:0; bottom:0;
-    padding:10px 10px 12px;
-    background:linear-gradient(to top, rgba(0,0,0,0.88), transparent);
-    font-family:'Anton'; font-size:13px; letter-spacing:0.01em;
-    text-align:center;
-  }
+/* ---------- BUY ---------- */
+.buy .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.5rem;align-items:center}
+.cover{aspect-ratio:2/3;max-width:320px;width:100%;margin-inline:auto;background:
+  radial-gradient(ellipse at 30% 30%,#3fd5a055,transparent 55%),
+  radial-gradient(ellipse at 70% 20%,#7a5cff55,transparent 50%),#0a121b;
+  border:1px solid #ffffff1f;display:flex;flex-direction:column;justify-content:space-between;padding:1.5rem;box-shadow:0 30px 60px -30px #000}
+.cover b{font-family:var(--display);font-weight:400;font-size:2.6rem;line-height:.9}
+.cover span{color:var(--ice-dim);font-size:.9rem}
+.meta{color:var(--ice-dim);font-size:.95rem;margin:1rem 0 1.75rem}
+.social{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:2rem;font-size:.95rem}
+.social a{text-decoration-color:#ffffff44;text-underline-offset:4px}
+footer{padding-block:2.5rem;color:var(--ice-dim);font-size:.85rem;border-top:1px solid #ffffff14}
 
-  .arrow{
-    position:absolute; top:50%; transform:translateY(-50%);
-    width:44px; height:44px; border-radius:50%;
-    background:rgba(11,11,12,0.7);
-    border:1px solid var(--line);
-    color:var(--ink);
-    font-size:18px;
-    display:flex; align-items:center; justify-content:center;
-    z-index:2;
-    transition:background 0.2s ease;
-  }
-  .arrow:hover{background:var(--blood);}
-  .arrow.left{left:-6px;}
-  .arrow.right{right:-6px;}
-  @media (max-width:640px){
-    .arrow.left{left:-2px;} .arrow.right{right:-2px;}
-  }
 
-  .dots{
-    display:flex; gap:6px; justify-content:center; flex-wrap:wrap;
-    margin-top:22px;
-  }
-  .dot{
-    width:7px; height:7px; border-radius:50%;
-    background:rgba(242,239,233,0.22);
-    border:none; padding:0;
-  }
-  .dot.active{background:var(--blood);}
+/* ---------- HERO (imagen real) ---------- */
+.hero2{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(#0f151b,#0f0f0d);padding-bottom:3.5rem}
+.hero2 .glow{position:absolute;z-index:-1;left:50%;top:0;width:70%;aspect-ratio:1;transform:translate(-50%,-38%);border-radius:50%;
+  background:radial-gradient(circle,#ff6a2a33 0%,#6b3cff22 38%,transparent 68%);filter:blur(30px);animation:breathe 7s ease-in-out infinite alternate}
+@keyframes breathe{from{opacity:.55;transform:translate(-50%,-38%) scale(.95)}to{opacity:1;transform:translate(-50%,-38%) scale(1.05)}}
+.hero2 .art{display:block;width:100%;max-width:1600px;height:auto;margin-inline:auto;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.hero2 canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero2 .under{text-align:center;position:relative}
+.hero2 .question{margin:1.25rem auto 1.75rem;max-width:34ch}
+.hero2 .actions{justify-content:center}
+.btn.ember:hover{background:#ff7a2e;border-color:#ff7a2e}
 
-  /* ---------- DETAIL PANEL ---------- */
-  .detail{
-    margin-top:50px;
-    display:grid;
-    grid-template-columns:260px 1fr;
-    gap:36px;
-    background:var(--panel);
-    border:1px solid var(--line);
-    padding:32px;
-    align-items:start;
-  }
-  .detail-photo{
-    width:100%; aspect-ratio:2/3; border-radius:3px; overflow:hidden; background:#202023;
-  }
-  .detail-photo img{width:100%; height:100%; object-fit:cover; display:block;}
-  .detail-photo .ph{
-    width:100%; height:100%; display:flex; align-items:center; justify-content:center;
-    color:var(--ink-dim); font-size:11px; text-align:center; padding:14px;
-    background:repeating-linear-gradient(135deg, #202023, #202023 10px, #1a1a1d 10px, #1a1a1d 20px);
-  }
-  .detail-name{
-    font-family:'Anton'; font-size:clamp(1.5rem,3vw,2rem); letter-spacing:0.01em; margin-bottom:14px;
-  }
-  .detail-bio{color:var(--ink-dim); font-size:15px; max-width:62ch;}
-  @media (max-width:640px){
-    .detail{grid-template-columns:1fr; }
-    .detail-photo{max-width:220px; margin:0 auto;}
-  }
 
-  /* ---------- SCENES / PAISAJES CAROUSEL ---------- */
-  .scene-card{
-    flex:0 0 auto; width:280px; aspect-ratio:2/3;
-    border-radius:4px; overflow:hidden; background:var(--panel);
-    flex-shrink:0;
-  }
-  .scene-card img{width:100%; height:100%; object-fit:cover; display:block;}
-  .scene-card .ph{
-    width:100%; height:100%; display:flex; align-items:center; justify-content:center;
-    color:var(--ink-dim); font-size:11px; text-align:center; padding:14px;
-    background:repeating-linear-gradient(135deg, #202023, #202023 10px, #1a1a1d 10px, #1a1a1d 20px);
-  }
+/* ---------- EXPEDIENTE (personajes) ---------- */
+.files{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:2.25rem 1.5rem;padding-top:.75rem}
+.file{all:unset;box-sizing:border-box;cursor:pointer;display:block;position:relative;background:var(--manila);color:var(--manila-ink);padding:1rem 1rem 1.2rem;border-radius:0 6px 3px 3px;transform:rotate(var(--r,0deg));box-shadow:0 12px 24px -12px #000c;transition:transform .25s}
+.file:hover,.file:focus-visible{transform:rotate(0deg) translateY(-4px)}
+.file:focus-visible{outline:2px solid #ff7a2e;outline-offset:4px}
+.file .num{position:absolute;top:-12px;right:.8rem;font-size:.75rem;opacity:.7}
+.photo{aspect-ratio:4/5;background:#2b2418;margin-bottom:.85rem;position:relative;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;filter:grayscale(1) sepia(.35) contrast(1.05);transition:filter .3s}
+.file:hover .photo img,.file:focus-visible .photo img{filter:none}
+.photo .clip{position:absolute;top:-6px;left:14px;width:14px;height:34px;border:2px solid #9aa3a8;border-radius:7px;z-index:2}
+.stamp{bottom:.7rem}
+.file h3{font-size:1.25rem}
+.file .alias{font-size:.85rem;margin:.2rem 0 0}
+dialog.dos{border:none;padding:0;background:transparent;max-width:min(920px,94vw);width:100%;color:var(--manila-ink)}
+dialog.dos::backdrop{background:#05080bd9;backdrop-filter:blur(3px)}
+.dos .sheet{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);background:var(--manila);border-radius:3px;overflow:hidden;max-height:90vh}
+.dos .poster{background:#111;display:flex;align-items:center;justify-content:center}
+.dos .poster img{width:100%;height:100%;max-height:90vh;object-fit:contain;display:block}
+.dos .info{padding:2rem 1.75rem;overflow:auto;position:relative;display:flex;flex-direction:column}
+.dos .info .num{font-size:.85rem;opacity:.7;margin:0}
+.dos .info h3{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.05;margin:.4rem 0 1rem}
+.dos .info p.bio{font-size:1.08rem;line-height:1.6;margin:0}
+.dos .info .stamp{position:static;display:inline-block;align-self:flex-start;margin-top:1.5rem;transform:rotate(-6deg)}
+.dos .nav{margin-top:auto;padding-top:2rem;display:flex;gap:.6rem;justify-content:space-between}
+.dos .nav button,.dos .x{font:inherit;cursor:pointer;background:transparent;border:1px solid var(--manila-ink);color:var(--manila-ink);padding:.5rem .9rem;border-radius:2px}
+.dos .nav button:hover,.dos .x:hover{background:var(--manila-ink);color:var(--manila)}
+.dos .x{position:absolute;top:1rem;right:1rem;padding:.3rem .65rem}
+@media (max-width:700px){.dos .sheet{grid-template-columns:1fr;max-height:92vh;overflow:auto}.dos .poster img{max-height:60vh}}
 
-  /* ---------- RETAILERS ---------- */
-  .retailer-row{
-    display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
-    gap:34px; margin-top:10px;
-  }
-  .retailer-row a{
-    text-decoration:none;
-    font-family:'Oswald'; font-weight:600; font-size:14px;
-    color:var(--ink-dim);
-    border-bottom:1px solid transparent;
-    transition:color 0.2s ease, border-color 0.2s ease;
-    padding-bottom:2px;
-  }
-  .retailer-row a:hover{color:var(--ink); border-color:var(--blood);}
+/* ---------- ESCENAS ---------- */
+.scenes{background:#0f151b}
+.strip{display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:1rem max(1.25rem,calc((100% - 1080px)/2)) 2rem;scrollbar-color:#ffffff33 transparent}
+.ev{all:unset;box-sizing:border-box;cursor:pointer;flex:0 0 clamp(170px,22vw,240px);scroll-snap-align:start;background:#e9e4d6;padding:.6rem .6rem 2.4rem;position:relative;box-shadow:0 14px 28px -14px #000;transform:rotate(var(--r,0deg));transition:transform .25s}
+.ev:hover,.ev:focus-visible{transform:rotate(0) translateY(-4px)}
+.ev:focus-visible{outline:2px solid #ff7a2e;outline-offset:4px}
+.ev img{display:block;width:100%;aspect-ratio:9/16;object-fit:cover}
+.ev span{position:absolute;left:.7rem;right:.7rem;bottom:.6rem;color:#2b2418;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* ---------- PAISAJES ---------- */
+.lands{background:#0f0f0d}
+.accordion{display:flex;gap:.5rem;height:min(72vh,640px)}
+.pane{all:unset;box-sizing:border-box;cursor:pointer;position:relative;flex:1;min-width:0;overflow:hidden;border-radius:2px;transition:flex .5s ease}
+.pane img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.7) brightness(.75);transition:filter .5s}
+.pane:hover,.pane:focus-visible{flex:4}
+.pane:hover img,.pane:focus-visible img{filter:none}
+.pane:focus-visible{outline:2px solid #ff7a2e;outline-offset:3px}
+.pane span{position:absolute;left:1rem;bottom:1rem;right:1rem;font-family:var(--display);font-size:1.3rem;color:#fff;text-shadow:0 2px 12px #000;opacity:0;transition:opacity .3s}
+.pane:hover span,.pane:focus-visible span{opacity:1}
+.casesocial a{color:#ff9a5a;text-underline-offset:4px}
+.casesocial{margin-top:.5rem}
+@media (max-width:520px){
+  .files{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.75rem .9rem}
+  .file{padding:.6rem .6rem .8rem}
+  .file h3{font-size:1rem}
+  .file .num{font-size:.65rem;right:.5rem}
+  .file .stamp{font-size:.62rem;padding:.05rem .3rem;border-width:1.5px}
+  .photo .clip{width:10px;height:26px;left:10px}
+}
+@media (max-width:760px){
+  .accordion{overflow-x:auto;scroll-snap-type:x mandatory;height:auto}
+  .pane{flex:0 0 70%;aspect-ratio:9/16;scroll-snap-align:start}
+  .pane:hover,.pane:focus-visible{flex:0 0 70%}
+  .pane img{filter:none}.pane span{opacity:1}
+}
+/* ---------- LIGHTBOX ---------- */
+dialog.lb{border:none;padding:0;background:transparent;max-width:96vw;max-height:96vh;overflow:visible}
+dialog.lb::backdrop{background:#05080bee}
+.lb img{display:block;max-width:92vw;max-height:84vh;margin:auto;box-shadow:0 20px 60px #000}
+.lb p{color:#d9e6ea;text-align:center;margin:.75rem 0 0}
+.lbx,.lbn{position:fixed;font:inherit;cursor:pointer;background:#0008;color:#fff;border:1px solid #ffffff44;border-radius:2px}
+.lbx{top:max(1rem,env(safe-area-inset-top,0px));right:1rem;padding:.35rem .7rem}
+.lbn{top:50%;transform:translateY(-50%);font-size:2rem;line-height:1;padding:.4rem .8rem}
+.lbn.prev{left:1rem}.lbn.next{right:1rem}
+/* ---------- MAPA con paisaje ---------- */
+.mapwrap{position:relative;background:var(--night-2);overflow:hidden}
+.mapwrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38;transition:opacity .35s}
+.mapwrap .map{position:relative;background:transparent}
+/* ---------- MALETÍN 7 cifras ---------- */
+.dials{gap:.4rem}
+.dial button{width:40px}
+.dial output{width:40px;font-size:2.1rem}
+@media (max-width:420px){.dial button,.dial output{width:34px}.dial output{font-size:1.8rem}.dials{gap:.25rem}.briefcase{padding-inline:.6rem}}
 
-  /* ---------- FOOTER ---------- */
-  footer{
-    padding:60px 24px 50px; text-align:center;
-    border-top:1px solid var(--line);
-  }
-  footer .logo-slot{
-    width:180px; height:70px; margin:0 auto 26px;
-    display:flex; align-items:center; justify-content:center;
-    position:relative;
-  }
-  footer .logo-slot img{max-width:100%; max-height:100%; object-fit:contain;}
-  footer .logo-slot.ph-logo{
-    border:1px dashed var(--line);
-    border-radius:4px;
-  }
-  footer .logo-slot.ph-logo::after{
-    content:"LOGO\A (img/logo.png)";
-    white-space:pre;
-    font-family:'Oswald', sans-serif; font-size:9px; letter-spacing:0.08em;
-    color:rgba(242,239,233,0.35);
-    text-align:center;
-  }
-  footer .brand-mini{font-family:'Anton'; font-size:1.3rem; letter-spacing:0.02em;}
-  footer .brand-mini .sub{
-    display:block; font-family:'Oswald'; font-size:10px; letter-spacing:0.18em;
-    color:var(--ink-dim); margin-top:4px; font-weight:500;
-  }
-  footer .links{margin-top:22px; font-size:12px; letter-spacing:0.1em; color:var(--ink-dim);}
-  footer .links a{margin:0 10px; text-decoration:none; color:var(--ink-dim);}
-  footer .links a:hover{color:var(--ink);}
+@media (max-width:760px){
+  .era .wrap,.mapgrid,.buy .wrap{grid-template-columns:1fr}
+  .title em{padding-left:.3em}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<header class="hero">
-  <img class="hero-banner" src="img/hero.png" alt="Proyecto Aurora — Un thriller apasionante"
-       onload="document.getElementById('heroFallback').style.display='none';"
-       onerror="this.style.display='none';">
-
-  <div class="hero-inner" id="heroFallback">
-    <div class="emblem" aria-hidden="true"></div>
-    <div class="kicker">Antonio Petit</div>
-    <div class="brand-row">
-      <h1 class="brand"><span class="l1">PROYECTO</span><span class="l2">AURORA</span></h1>
-      <div class="book-cover">
-        <img src="img/tapa-libro.png" alt="Tapa del libro Proyecto Aurora"
-             onerror="this.style.display='none'; this.parentElement.classList.add('ph-cover');">
-        <span class="bt">PROYECTO</span>
-        <span class="bt2">AURORA</span>
-      </div>
+<header class="hero2">
+  <div class="glow" aria-hidden="true"></div>
+  <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Proyecto Aurora, de Antonio Petit</h1>
+  <img class="art" src="img/hero.jpg" fetchpriority="high" alt="Proyecto Aurora, de Antonio Petit. Un thriller apasionante." width="1600" height="831">
+    <div class="wrap under">
+    <p class="question">¿Hay secretos que la humanidad debería conocer?</p>
+    <div class="actions">
+      <a class="btn ember" href="#epocas">Abrir el expediente</a>
+      <a class="btn ghost ember" href="#comprar">Comprar el libro</a>
     </div>
-    <div class="tagline">Un thriller apasionante</div>
   </div>
 </header>
 
-<hr class="rule">
-
-<!-- SINOPSIS -->
-<section class="wrap" id="seccion-sinopsis">
-  <h2 class="section-title">Sinopsis</h2>
-  <div class="sinopsis-text">
-    <p>Berlín, 1945. Argentina, 1980. Buenos Aires, 2014.</p>
-    <p>Tres épocas, un secreto capaz de reescribir la historia de la humanidad.</p>
-    <p>En los últimos días del Tercer Reich, un científico custodia la clave de un descubrimiento inimaginable en un maletín. Perseguido por la sociedad secreta Schwarze Sonne, su destino se entrelaza con conspiraciones que atraviesan décadas y continentes.</p>
-    <p>Décadas más tarde, Darío, un investigador de inteligencia con más calle que paciencia, se ve arrastrado a un crimen inexplicable, un cuadro sin firma y una anciana que custodia un secreto monumental.</p>
-    <p>Desde los Alpes bávaros hasta la Antártida, desde los canales del delta hasta las entrañas de la tierra, pasado y presente colisionan en una persecución feroz. Y en el centro de todo, una pregunta que no tiene época: ¿hay secretos que la humanidad debería conocer?</p>
-  </div>
-
-  <!-- Cuando esté el trailer: cambiar el texto por "Ver Trailer" y
-       envolver el botón en un <a href="LINK_DE_YOUTUBE" target="_blank">
-       (o armar el modal que se abre en la página, según lo que prefieras). -->
-  <div class="trailer-btn-wrap">
-    <a class="trailer-btn" href="https://www.instagram.com/p/DdfD1Ahq11a/" target="_blank" rel="noopener">Ver trailer</a>
-  </div>
-</section>
-
-<hr class="rule">
-
-<!-- PERSONAJES -->
-<section class="wrap" id="seccion-personajes">
-  <h2 class="section-title">Guía de personajes</h2>
-
-  <div class="carousel-shell">
-    <button class="arrow left" id="charPrev" aria-label="Personaje anterior">‹</button>
-    <button class="arrow right" id="charNext" aria-label="Personaje siguiente">›</button>
-    <div class="carousel-track-wrap">
-      <div class="carousel-track" id="charTrack"></div>
+<main id="epocas">
+  <section class="era e1945" aria-labelledby="y1945">
+    <div class="wrap">
+      <div><h2 class="year" id="y1945">1945</h2><p class="place">Berlín</p></div>
+      <p class="body">Los últimos días del Tercer Reich. Un científico custodia en un maletín la clave de un descubrimiento inimaginable, mientras una sociedad secreta le sigue los pasos.</p>
     </div>
-  </div>
-
-  <div class="dots" id="charDots"></div>
-
-  <div class="detail" id="charDetail"></div>
-</section>
-
-<hr class="rule">
-
-<!-- ESCENAS -->
-<section class="wrap" id="seccion-escenas">
-  <h2 class="section-title">Escenas</h2>
-  <div class="carousel-shell">
-    <button class="arrow left" id="scenePrev" aria-label="Escena anterior">‹</button>
-    <button class="arrow right" id="sceneNext" aria-label="Escena siguiente">›</button>
-    <div class="carousel-track-wrap">
-      <div class="carousel-track" id="sceneTrack"></div>
+  </section>
+  <section class="era e1980" aria-labelledby="y1980">
+    <div class="wrap">
+      <div><h2 class="year" id="y1980">1980</h2><p class="place">La Cumbrecita, Córdoba</p></div>
+      <p class="body">Un pueblo de montaña en las sierras. Una casa de espejos que guarda más de lo que muestra. Un secreto que cruzó el océano y décadas de silencio.</p>
     </div>
-  </div>
-</section>
-
-<hr class="rule">
-
-<!-- PAISAJES -->
-<section class="wrap" id="seccion-paisajes">
-  <h2 class="section-title">Paisajes</h2>
-  <div class="carousel-shell">
-    <button class="arrow left" id="paisajePrev" aria-label="Paisaje anterior">‹</button>
-    <button class="arrow right" id="paisajeNext" aria-label="Paisaje siguiente">›</button>
-    <div class="carousel-track-wrap">
-      <div class="carousel-track" id="paisajeTrack"></div>
+  </section>
+  <section class="era e2014" aria-labelledby="y2014">
+    <div class="wrap">
+      <div><h2 class="year" id="y2014">2014</h2><p class="place">Buenos Aires</p></div>
+      <p class="body">Darío, investigador de inteligencia con más calle que paciencia, queda atrapado en un crimen inexplicable, un cuadro sin firma y una anciana que custodia un secreto monumental.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<hr class="rule">
+  <section class="sec" aria-labelledby="maptitle">
+    <div class="wrap">
+      <h2 id="maptitle">La persecución</h2>
+      <p class="lede">Tres continentes, del corazón de Europa al hielo del sur. Elegí un lugar.</p>
+      <div class="mapgrid">
+        <div class="mapwrap"><img id="mapBg" alt=""><svg class="map" viewBox="100 26 112 150" role="img" aria-label="Mapa de los lugares de la novela">
+          <g id="grat"></g>
+          <line class="eq" x1="100" y1="90" x2="212" y2="90"/>
+          <text x="102" y="88.5" fill="#ffffff40" font-size="3" font-family="Courier Prime, monospace">ecuador</text>
+          <polyline class="route" points="193.4,37.5 191,42.5 115.2,121.9 121.1,123.8 121.7,124.7 120,166"/>
+          <g id="pts"></g>
+        </svg></div>
+        <div>
+          <ul class="places" id="placeList"></ul>
+          <p class="placenote" id="placeNote" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- TIENDAS -->
-<section class="wrap" style="text-align:center;" id="seccion-libro">
-  <h2 class="section-title">Conseguí el libro</h2>
-  <div class="retailer-row">
-    <a href="https://www.amazon.com/dp/B0HD7V7B7S" target="_blank" rel="noopener">Amazon</a>
-    <a href="https://play.google.com/store/audiobooks/details?id=AQAAAED6KytrwM" target="_blank" rel="noopener">Google Play</a>
-    <a href="https://entrelectoresyescritores.com/LIBRERIADKN/ficha.php?id=22571" target="_blank" rel="noopener">Editorial Dunken</a>
-    <a href="https://www.buscalibre.com.ar/libro-proyecto-aurora/9789878558103/p/68642705" target="_blank" rel="noopener">Buscalibre</a>
-    <a href="https://www.mercadolibre.com.ar/proyecto-aurora/up/MLAU5038596899" target="_blank" rel="noopener">Mercado Libre</a>
-  </div>
-</section>
+  <section class="sec dossier" id="expediente" aria-labelledby="dostitle">
+    <div class="wrap">
+      <h2 id="dostitle">Expediente</h2>
+      <p class="lede">Personas de interés en el caso. Abrí cada ficha para ver el archivo completo.</p>
+      <div class="files" id="files"></div>
+    </div>
+    <dialog class="dos" id="dos" aria-labelledby="dosName">
+      <div class="sheet">
+        <div class="poster"><img id="dosImg" alt=""></div>
+        <div class="info">
+          <button class="x" type="button" id="dosClose" aria-label="Cerrar ficha">✕</button>
+          <p class="num" id="dosNum"></p>
+          <h3 id="dosName"></h3>
+          <p class="bio" id="dosBio"></p>
+          <span class="stamp">Confidencial</span>
+          <div class="nav"><button type="button" id="dosPrev">Ficha anterior</button><button type="button" id="dosNext">Ficha siguiente</button></div>
+        </div>
+      </div>
+    </dialog>
+  </section>
 
-<footer>
-  <div class="logo-slot" id="logoSlot">
-    <img src="img/logo.png" alt="Logo Proyecto Aurora"
-         onerror="this.style.display='none'; this.parentElement.classList.add('ph-logo');">
-  </div>
-  <div class="links">
-    <a href="https://www.instagram.com/antoniopetitescritor" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.tiktok.com/@antoniopetitescritor" target="_blank" rel="noopener">TikTok</a>
-    <a href="mailto:antoniopetitescritor@gmail.com">Email</a>
-  </div>
-</footer>
+  <section class="sec scenes" id="escenas" aria-labelledby="esctitle">
+    <div class="wrap">
+      <h2 id="esctitle">Escenas</h2>
+      <p class="lede">Material de evidencia recuperado. Deslizá para ver más y tocá una foto para ampliarla.</p>
+    </div>
+    <div class="strip" id="strip"></div>
+  </section>
+
+  <section class="sec lands" id="paisajes" aria-labelledby="paititle">
+    <div class="wrap">
+      <h2 id="paititle">Paisajes</h2>
+      <p class="lede">Los lugares donde pasa todo.</p>
+      <div class="accordion" id="accordion"></div>
+    </div>
+  </section>
+
+  <dialog class="lb" id="lb" aria-label="Imagen ampliada">
+    <img id="lbImg" alt="">
+    <p id="lbCap"></p>
+    <button type="button" class="lbx" id="lbClose" aria-label="Cerrar">✕</button>
+    <button type="button" class="lbn prev" id="lbPrev" aria-label="Anterior">‹</button>
+    <button type="button" class="lbn next" id="lbNext" aria-label="Siguiente">›</button>
+  </dialog>
+
+  <section class="sec" aria-labelledby="trailertitle">
+    <div class="wrap">
+      <h2 id="trailertitle">Tráiler</h2>
+      <p class="lede">El libro, en movimiento.</p>
+      <div class="trailer"><div><strong>Próximamente</strong><p>El tráiler oficial se estrena en las redes del autor.</p></div></div>
+    </div>
+  </section>
+
+  <section class="sec case" id="maletin" aria-labelledby="casetitle">
+    <div class="wrap casebox">
+      <h2 id="casetitle">El maletín</h2>
+      <p class="clue">El maletín sigue cerrado.</p>
+      <p class="hint">Muy pronto voy a revelar las pistas en mis redes, y quien lo abra se gana un ejemplar de Proyecto Aurora. Seguime para no perdértelo.</p>
+      <p class="hint casesocial"><a href="https://www.tiktok.com/@antoniopetitescritor" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/antoniopetitescritor" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@AntonioPetitEscritor" target="_blank" rel="noopener">YouTube</a></p>
+      <div class="briefcase" id="briefcase">
+        <div class="dials" id="dials"></div>
+      </div>
+      <button class="btn" id="tryBtn" type="button">Abrir el maletín</button>
+      <p class="status" id="status" aria-live="polite"></p>
+      <p class="hint" id="tries"></p>
+      <div id="keygen" hidden style="margin-top:2rem;text-align:left;border:1px dashed #ffffff44;padding:1rem">
+        <p style="margin:0 0 .5rem">Generador de clave (solo para el autor). Escribí la nueva combinación de 7 cifras:</p>
+        <input id="kgIn" inputmode="numeric" maxlength="7" style="font:inherit;padding:.4rem;width:10ch">
+        <button class="btn ghost" type="button" id="kgBtn">Generar</button>
+        <p style="word-break:break-all;margin:.75rem 0 0" id="kgOut"></p>
+      </div>
+      <div class="reveal" id="reveal" role="region" aria-label="Premio del maletín">
+        <h3>¡Abriste el maletín!</h3>
+        <p>Ganaste un ejemplar de <strong>Proyecto Aurora</strong>.</p>
+        <p>Sacá una captura de esta pantalla y mandámela por mensaje a <strong>@antoniopetitescritor</strong> en Instagram o TikTok para reclamar tu libro.</p>
+        <p id="winCode" style="font-weight:700"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec buy" id="comprar" aria-labelledby="buytitle">
+    <div class="wrap">
+      <div class="cover" aria-hidden="true"><span>Antonio Petit</span><b>Proyecto<br>Aurora</b><span>Editorial Dunken</span></div>
+      <div>
+        <h2 id="buytitle">Conseguí el libro</h2>
+        <p class="lede" style="margin-bottom:0">264 páginas. Tres épocas. Un secreto capaz de reescribir la historia de la humanidad.</p>
+        <p class="meta">Editorial Dunken, Buenos Aires, 2026 · ISBN 978-987-85-5848-6 · Papel y EPUB</p>
+        <a class="btn" href="https://www.dunken.org/SYS.shop/index.php?id=22571" target="_blank" rel="noopener">Comprar en Dunken</a>
+        <div class="social">
+          <a href="https://www.tiktok.com/@antoniopetitescritor" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.instagram.com/antoniopetitescritor" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.youtube.com/@AntonioPetitEscritor" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap" style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap"><img src="img/logo.png" alt="Logo Proyecto Aurora" loading="lazy" style="height:48px;width:auto" onerror="this.remove()">© 2026 Antonio Petit. Proyecto Aurora es una obra de ficción.</div></footer>
 
 <script>
-/* =========================================================
-   DATOS DE PERSONAJES
-   - "img": ruta al archivo (dejalo así si todavía no tenés
-     la imagen final — se muestra un marcador temporal).
-   - Para activar una foto: poné el archivo en /img/ con el
-     mismo nombre que aparece acá abajo.
-   ========================================================= */
-const personajes = [
-  { id:"gabriel",  nombre:'Gabriel "el Turco" Hazzad', img:"img/gabriel.png", imgDetalle:"img/detalle/gabriel.png",
-    bio:'Uno de los amigos de siempre en La Fogazza — el que nunca falta a una charla de café.' },
-  { id:"hipolito",  nombre:'Hipólito "Puflito" Gómez', img:"img/hipolito.png", imgDetalle:"img/detalle/hipolito.png",
-    bio:'El filósofo del bar. Un truco de magia, un consejo de vida, y un encendedor que se queda en la memoria de Darío para siempre.' },
-  { id:"eduardo",  nombre:'Eduardo "el Judío"', img:"img/eduardo.png", imgDetalle:"img/detalle/eduardo.png",
-    bio:'Otro pilar de La Fogazza — parte del grupo que nunca deja solo a Darío, pase lo que pase.' },
-  { id:"mario",  nombre:'Mario "el Tano" Fuccile', img:"img/mario.png", imgDetalle:"img/detalle/mario.png",
-    bio:'El tercero del trío de amigos que espera a Darío cada vez que el mundo se le complica.' },
-  { id:"romulo", nombre:"Rómulo", img:"img/romulo.png", imgDetalle:"img/detalle/romulo.png",
-    bio:"Nómada del desierto de Sinjar, criptógrafo, estratega militar entrenado por los británicos. La mente de un matemático... y reflejos letales." },
-  { id:"taladro", nombre:"Taladro", img:"img/taladro.png", imgDetalle:"img/detalle/taladro.png",
-    bio:"El interrogador de Schwarze Sonne. Nadie se resiste ante él, nadie sale ileso." },
-  { id:"dario", nombre:"Darío", img:"img/dario.png", imgDetalle:"img/detalle/dario.png",
-    bio:"Investigador forense de Forarg en Buenos Aires. Un caso cualquiera está a punto de arrastrarlo a algo mucho más grande." },
-  { id:"lauchita", nombre:"Lauchita", img:"img/lauchita.png", imgDetalle:"img/detalle/lauchita.png",
-    bio:'Hacker clandestino. Rasgos asiáticos, pero más argentino que el mate y las facturas. Puede hackear cualquier cosa — pero todo tiene un precio.' },
-  { id:"anna", nombre:"Anna", img:"img/anna.png", imgDetalle:"img/detalle/anna.png",
-    bio:"Una presencia inquietante en la fiesta del Hotel Adlon. Nadie imagina lo que está a punto de cambiar todo." },
-  { id:"marivea", nombre:"Marivea", img:"img/marivea.png", imgDetalle:"img/detalle/marivea.png",
-    bio:"La abuela de Jozef. Encendió en él el amor por la ciencia — y sabe defenderse mejor de lo que aparenta." },
-  { id:"pelusa", nombre:"Pelusa", img:"img/pelusa.png", imgDetalle:"img/detalle/pelusa.png",
-    bio:"El más veterano del escuadrón táctico. Ojos que ya vieron de todo." },
-  { id:"gardel", nombre:"Gardel", img:"img/gardel.png", imgDetalle:"img/detalle/gardel.png",
-    bio:"Compacto, fuerte, y el encargado de que las comunicaciones nunca fallen." },
-  { id:"truco", nombre:"Truco", img:"img/truco.png", imgDetalle:"img/detalle/truco.png",
-    bio:"El más joven del tridente táctico, pero con más experiencia de la que aparenta." },
-  { id:"carla", nombre:"Carla", img:"img/carla.png", imgDetalle:"img/detalle/carla.png",
-    bio:"La secretaria, no solo atiende llamadas — también fue entrenada para algo más." },
-  { id:"nadia", nombre:"Nadia", img:"img/nadia.png", imgDetalle:"img/detalle/nadia.png",
-    bio:"Al frente de una organización que lleva décadas guardando secretos ajenos." },
-  { id:"santiago", nombre:"Santiago", img:"img/santiago.png", imgDetalle:"img/detalle/santiago.png",
-    bio:"Un joven científico brillante, con más preguntas sobre sí mismo de las que imagina." },
-  { id:"verner", nombre:"Verner", img:"img/verner.png", imgDetalle:"img/detalle/verner.png",
-    bio:"Autoridad, rigidez, y una decisión imposible pesándole cada segundo de esa noche." },
-  { id:"jozef", nombre:"Jozef", img:"img/jozef.png", imgDetalle:"img/detalle/jozef.png",
-    bio:"Científico en ascenso, con el corazón dividido entre el arte y la ciencia — y un descubrimiento que lo va a cambiar todo." },
-  { id:"elena", nombre:"Elena", img:"img/elena.png", imgDetalle:"img/detalle/elena.png",
-    bio:"La esposa de Jozef. Radiante, valiente, dispuesta a proteger lo que más quiere pase lo que pase." },
-  { id:"aurora", nombre:"Aurora", img:"img/aurora.png", imgDetalle:"img/detalle/aurora.png",
-    bio:"Diminuta, filosa, y guardiana de un secreto que lleva setenta años protegiendo." },
-  { id:"lenz", nombre:"Lenz", img:"img/lenz.png", imgDetalle:"img/detalle/lenz.png",
-    bio:"Dinero, poder, y ningún límite. Alguien a quien nadie debería subestimar." },
-  { id:"agnes", nombre:"Agnes", img:"img/agnes.png", imgDetalle:"img/detalle/agnes.png",
-    bio:"Hermosa, de voz angelical — y mucho más peligrosa de lo que parece." },
-  { id:"mariana", nombre:"Mariana", img:"img/mariana.png", imgDetalle:"img/detalle/mariana.png",
-    bio:"La topógrafa que sostiene la vida de Darío en medio de la tormenta." },
-];
+(function(){
+  // graticule
+  var g=document.getElementById('grat'),ns='http://www.w3.org/2000/svg';
+  for(var x=100;x<=212;x+=10){var l=document.createElementNS(ns,'line');l.setAttribute('x1',x);l.setAttribute('x2',x);l.setAttribute('y1',26);l.setAttribute('y2',176);l.setAttribute('class','grat');g.appendChild(l);}
+  for(var y=30;y<=176;y+=10){var l2=document.createElementNS(ns,'line');l2.setAttribute('y1',y);l2.setAttribute('y2',y);l2.setAttribute('x1',100);l2.setAttribute('x2',212);l2.setAttribute('class','grat');g.appendChild(l2);}
 
-/* =========================================================
-   DATOS DE ESCENAS
-   ========================================================= */
-const escenas = [
-  { id:"esc1", img:"img/escenas/escena-01-motocicleta.jpg", alt:"La huida en la nieve" },
-  { id:"esc2", img:"img/escenas/escena-02.jpg", alt:"Escena 2" },
-  { id:"esc3", img:"img/escenas/escena-03.jpg", alt:"Escena 3" },
-  { id:"esc4", img:"img/escenas/escena-04.jpg", alt:"Escena 4" },
-  { id:"esc5", img:"img/escenas/escena-05.jpg", alt:"Escena 5" },
-  { id:"esc6", img:"img/escenas/escena-06.jpg", alt:"Escena 6" },
-  { id:"esc7", img:"img/escenas/escena-07.jpg", alt:"Escena 7" },
-  { id:"esc8", img:"img/escenas/escena-08.jpg", alt:"Escena 8" },
-  { id:"esc9", img:"img/escenas/escena-09.jpg", alt:"Escena 9" },
-  { id:"esc10", img:"img/escenas/escena-10.jpg", alt:"Escena 10" },
-  { id:"esc11", img:"img/escenas/escena-11.jpg", alt:"Escena 11" },
-  { id:"esc12", img:"img/escenas/escena-12.jpg", alt:"Escena 12" },
-  { id:"esc13", img:"img/escenas/escena-13.jpg", alt:"Escena 13" },
-  { id:"esc14", img:"img/escenas/escena-14.jpg", alt:"Escena 14" },
-];
-
-/* =========================================================
-   DATOS DE PAISAJES
-   Mismo sistema que Escenas: para sumar uno nuevo, agregá una
-   línea siguiendo el mismo patrón y subí la foto a
-   img/paisajes/ con el nombre exacto que pongas acá.
-   ========================================================= */
-const paisajes = [
-  { id:"pai1", img:"img/paisajes/paisaje-01.jpg", alt:"Paisaje 1" },
-  { id:"pai2", img:"img/paisajes/paisaje-02.jpg", alt:"Paisaje 2" },
-  { id:"pai3", img:"img/paisajes/paisaje-03.jpg", alt:"Paisaje 3" },
-  { id:"pai4", img:"img/paisajes/paisaje-04.jpg", alt:"Paisaje 4" },
-  { id:"pai5", img:"img/paisajes/paisaje-05.jpg", alt:"Paisaje 5" },
-  { id:"pai6", img:"img/paisajes/paisaje-06.jpg", alt:"Paisaje 6" },
-  { id:"pai7", img:"img/paisajes/paisaje-07.jpg", alt:"Paisaje 7" },
-];
-
-/* =========================================================
-   CARRUSEL DE PERSONAJES
-   ========================================================= */
-const charTrack  = document.getElementById('charTrack');
-const charDots   = document.getElementById('charDots');
-const charDetail = document.getElementById('charDetail');
-let activeIndex  = Math.floor(personajes.length / 2);
-
-function imgOrPlaceholder(src, label, extraClass){
-  return `<div class="img-slot" data-src="${src}" data-label="${label}"></div>`;
-}
-
-function buildCharCards(){
-  charTrack.innerHTML = personajes.map((p, i) => `
-    <div class="char-card" data-index="${i}">
-      <img src="${p.img}" alt="${p.nombre}" width="400" height="600" decoding="async"
-           onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',innerHTML:'SIN IMAGEN<br>${p.nombre.replace(/'/g,"\\'")}'}))">
-    </div>
-  `).join('');
-}
-
-function buildDots(){
-  charDots.innerHTML = personajes.map((_, i) =>
-    `<button class="dot" data-index="${i}" aria-label="Ir a personaje ${i+1}"></button>`
-  ).join('');
-}
-
-function renderDetail(){
-  const p = personajes[activeIndex];
-  charDetail.innerHTML = `
-    <div class="detail-photo">
-      <img src="${p.imgDetalle}" alt="${p.nombre}" width="400" height="600"
-           data-fallback="${p.img}"
-           onerror="handleDetailImgError(this)">
-    </div>
-    <div>
-      <div class="detail-name">${p.nombre}</div>
-      <div class="detail-bio">${p.bio}</div>
-    </div>
-  `;
-}
-
-// Si falta la foto "de detalle", probamos con la del carrusel.
-// Si tampoco existe esa, recién ahí mostramos el marcador "Sin imagen".
-function handleDetailImgError(img){
-  const fallback = img.dataset.fallback;
-  if(fallback && img.src.indexOf(fallback) === -1){
-    img.src = fallback;
-    img.removeAttribute('data-fallback');
-  } else {
-    img.replaceWith(Object.assign(document.createElement('div'), {
-      className:'ph', textContent:'Sin imagen todavía'
-    }));
+  var places=[
+    {id:'berlin',name:'Berlín',coord:'52°N 13°E',x:193.4,y:37.5,lx:-16,ly:-2,img:'img/paisajes/paisaje-02.jpg',note:'Abril de 1945. La ciudad arde y un hombre escapa con un maletín que no puede caer en manos equivocadas.'},
+    {id:'alpes',name:'Alpes bávaros',coord:'47°N 11°E',x:191,y:42.5,lx:-24,ly:5,img:'img/paisajes/paisaje-04.jpg',note:'Nieve, silencio y una sociedad secreta que no olvida lo que perdió.'},
+    {id:'cumbrecita',name:'La Cumbrecita',coord:'31°S 64°O',x:115.2,y:121.9,lx:-14,ly:-3.5,img:'img/paisajes/paisaje-03.jpg',note:'Un pueblo de montaña en las sierras de Córdoba. Y una casa de espejos que guarda más de lo que muestra.'},
+    {id:'delta',name:'Delta',coord:'34°S 58°O',x:121.1,y:123.8,lx:3.5,ly:-1.2,img:'img/paisajes/paisaje-07.jpg',note:'Canales, islas y niebla. El lugar perfecto para que alguien desaparezca.'},
+    {id:'bsas',name:'Buenos Aires',coord:'34°S 58°O',x:121.7,y:124.7,lx:3.5,ly:3.6,img:'img/paisajes/paisaje-06.jpg',note:'2014. La ciudad no duerme, y un caso cualquiera deja de serlo.'},
+    {id:'antartida',name:'Antártida',coord:'76°S 60°O',x:120,y:166,lx:3.5,ly:1.2,img:'img/paisajes/paisaje-05.jpg',note:'En el fin del mundo, el hielo guarda lo que el tiempo no pudo borrar.'}
+  ];
+  var pts=document.getElementById('pts'),list=document.getElementById('placeList'),note=document.getElementById('placeNote');
+  function select(id){
+    places.forEach(function(p){
+      var on=p.id===id;
+      p.g.classList.toggle('on',on);
+      p.dot.setAttribute('r',on?2.4:1.6);
+      p.btn.setAttribute('aria-pressed',on?'true':'false');
+      if(on){note.textContent=p.note;var bg=document.getElementById('mapBg');bg.style.opacity=0;setTimeout(function(){bg.src=p.img;bg.style.opacity=''},180);}
+    });
   }
-}
-
-function updateActiveStyles(){
-  [...charTrack.children].forEach((el, i) => {
-    el.classList.toggle('active', i === activeIndex);
+  places.forEach(function(p){
+    var gg=document.createElementNS(ns,'g');gg.setAttribute('class','pt');
+    var hit=document.createElementNS(ns,'circle');hit.setAttribute('cx',p.x);hit.setAttribute('cy',p.y);hit.setAttribute('r',5);hit.setAttribute('fill','transparent');
+    var dot=document.createElementNS(ns,'circle');dot.setAttribute('cx',p.x);dot.setAttribute('cy',p.y);dot.setAttribute('r',1.6);dot.setAttribute('class','dot');
+    var t=document.createElementNS(ns,'text');t.setAttribute('x',p.x+p.lx);t.setAttribute('y',p.y+p.ly);t.textContent=p.name;
+    gg.appendChild(hit);gg.appendChild(dot);gg.appendChild(t);
+    gg.addEventListener('click',function(){select(p.id)});
+    pts.appendChild(gg);p.g=gg;p.dot=dot;
+    var li=document.createElement('li'),b=document.createElement('button');
+    b.type='button';b.setAttribute('aria-pressed','false');
+    b.innerHTML='<span></span><span></span>';b.firstChild.textContent=p.name;b.lastChild.textContent=p.coord;
+    b.addEventListener('click',function(){select(p.id)});
+    li.appendChild(b);list.appendChild(li);p.btn=b;
   });
-  [...charDots.children].forEach((el, i) => {
-    el.classList.toggle('active', i === activeIndex);
+  select('berlin');
+
+  // briefcase lock
+  /* =====================================================
+     COMBINACIÓN DEL MALETÍN
+     No se guarda el número, sino su huella cifrada (SHA-256).
+     Para cambiarla: abrí la página agregando #generar-clave
+     al final de la dirección, escribí tu número de 7 cifras,
+     tocá Generar y pegá el resultado acá abajo, entre comillas.
+     Mientras quede vacía (""), ninguna combinación abre el maletín.
+     ===================================================== */
+  var CLAVE_CIFRADA=""; // vacía = el maletín no se abre con ninguna combinación
+
+  var N=7,digits=[],dials=document.getElementById('dials');
+  for(var k=0;k<N;k++)digits.push(0);
+  digits.forEach(function(d,i){
+    var w=document.createElement('div');w.className='dial';
+    var up=document.createElement('button');up.type='button';up.textContent='▲';up.setAttribute('aria-label','Subir cifra '+(i+1));
+    var o=document.createElement('output');o.textContent='0';o.setAttribute('aria-label','Cifra '+(i+1));
+    var dn=document.createElement('button');dn.type='button';dn.textContent='▼';dn.setAttribute('aria-label','Bajar cifra '+(i+1));
+    up.onclick=function(){digits[i]=(digits[i]+1)%10;o.textContent=digits[i]};
+    dn.onclick=function(){digits[i]=(digits[i]+9)%10;o.textContent=digits[i]};
+    w.appendChild(up);w.appendChild(o);w.appendChild(dn);dials.appendChild(w);
   });
-}
-
-function centerActiveCard(){
-  const card = charTrack.children[activeIndex];
-  if(!card) return;
-  const wrapWidth = charTrack.parentElement.offsetWidth;
-  const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-  const offset = wrapWidth / 2 - cardCenter;
-  charTrack.style.transform = `translateX(${offset}px)`;
-}
-
-function setActive(i){
-  activeIndex = (i + personajes.length) % personajes.length;
-  updateActiveStyles();
-  centerActiveCard();
-  renderDetail();
-}
-
-buildCharCards();
-buildDots();
-setActive(activeIndex);
-
-document.getElementById('charPrev').addEventListener('click', () => setActive(activeIndex - 1));
-document.getElementById('charNext').addEventListener('click', () => setActive(activeIndex + 1));
-charTrack.addEventListener('click', (e) => {
-  const card = e.target.closest('.char-card');
-  if(card) setActive(Number(card.dataset.index));
-});
-charDots.addEventListener('click', (e) => {
-  const dot = e.target.closest('.dot');
-  if(dot) setActive(Number(dot.dataset.index));
-});
-window.addEventListener('resize', centerActiveCard);
-
-/* =========================================================
-   CARRUSEL DE ESCENAS (solo flechas, sin blur)
-   ========================================================= */
-const sceneTrack = document.getElementById('sceneTrack');
-sceneTrack.innerHTML = escenas.map(s => `
-  <div class="scene-card">
-    <img src="${s.img}" alt="${s.alt}" width="400" height="600" decoding="async"
-         onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'${s.alt}\\n(sin imagen todavía)'}))">
-  </div>
-`).join('');
-
-let sceneScroll = 0;
-function shiftScenes(dir){
-  const card = sceneTrack.children[0];
-  const step = card.offsetWidth + 14;
-  const maxScroll = -(step * (escenas.length - 1));
-  sceneScroll = Math.max(maxScroll, Math.min(0, sceneScroll + dir * step * -1));
-  sceneTrack.style.transform = `translateX(${sceneScroll}px)`;
-}
-document.getElementById('scenePrev').addEventListener('click', () => shiftScenes(-1));
-document.getElementById('sceneNext').addEventListener('click', () => shiftScenes(1));
-
-/* =========================================================
-   CARRUSEL DE PAISAJES (mismo sistema que Escenas)
-   ========================================================= */
-const paisajeTrack = document.getElementById('paisajeTrack');
-paisajeTrack.innerHTML = paisajes.map(p => `
-  <div class="scene-card">
-    <img src="${p.img}" alt="${p.alt}" width="400" height="600" decoding="async"
-         onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph',textContent:'${p.alt}\\n(sin imagen todavía)'}))">
-  </div>
-`).join('');
-
-let paisajeScroll = 0;
-function shiftPaisajes(dir){
-  const card = paisajeTrack.children[0];
-  const step = card.offsetWidth + 14;
-  const maxScroll = -(step * (paisajes.length - 1));
-  paisajeScroll = Math.max(maxScroll, Math.min(0, paisajeScroll + dir * step * -1));
-  paisajeTrack.style.transform = `translateX(${paisajeScroll}px)`;
-}
-document.getElementById('paisajePrev').addEventListener('click', () => shiftPaisajes(-1));
-document.getElementById('paisajeNext').addEventListener('click', () => shiftPaisajes(1));
+  function sha(t){return crypto.subtle.digest('SHA-256',new TextEncoder().encode('aurora:'+t)).then(function(b){return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,'0')}).join('')})}
+  var tries=0,status=document.getElementById('status'),triesEl=document.getElementById('tries'),reveal=document.getElementById('reveal'),bc=document.getElementById('briefcase');
+  document.getElementById('tryBtn').addEventListener('click',function(){
+    var code=digits.join('');tries++;
+    sha(code).then(function(h){
+      if(h===CLAVE_CIFRADA){
+        status.style.color='#ff9a5a';status.textContent='Clic. La cerradura cede.';
+        document.getElementById('winCode').textContent='Abierto el '+new Date().toLocaleString('es-AR');
+        reveal.classList.add('open');reveal.scrollIntoView({behavior:'smooth',block:'start'});
+      }else{
+        status.style.color='';status.textContent='Combinación incorrecta. Seguí intentando.';
+        triesEl.textContent='Intentos: '+tries;
+        bc.classList.remove('opened');void bc.offsetWidth;bc.classList.add('opened');
+      }
+    });
+  });
+  if(location.hash==='#generar-clave'){
+    var kg=document.getElementById('keygen');kg.hidden=false;
+    document.getElementById('kgBtn').onclick=function(){
+      var v=document.getElementById('kgIn').value.trim();
+      if(!/^\d{7}$/.test(v)){document.getElementById('kgOut').textContent='Tienen que ser exactamente 7 cifras.';return}
+      sha(v).then(function(h){document.getElementById('kgOut').textContent=h});
+    };
+  }
+})();
 </script>
 
+
+<script>
+(function(){
+  var P=[{"id": "gabriel", "nombre": "Gabriel \"el Turco\" Hazzad", "bio": "Uno de los amigos de siempre en La Fogazza — el que nunca falta a una charla de café.", "img": "img/gabriel.jpg", "det": "img/detalle/gabriel.jpg"}, {"id": "hipolito", "nombre": "Hipólito \"Puflito\" Gómez", "bio": "El filósofo del bar. Un truco de magia, un consejo de vida, y un encendedor que se queda en la memoria de Darío para siempre.", "img": "img/hipolito.jpg", "det": "img/detalle/hipolito.jpg"}, {"id": "eduardo", "nombre": "Eduardo \"el Judío\"", "bio": "Otro pilar de La Fogazza — parte del grupo que nunca deja solo a Darío, pase lo que pase.", "img": "img/eduardo.jpg", "det": "img/detalle/eduardo.jpg"}, {"id": "mario", "nombre": "Mario \"el Tano\" Fuccile", "bio": "El tercero del trío de amigos que espera a Darío cada vez que el mundo se le complica.", "img": "img/mario.jpg", "det": "img/detalle/mario.jpg"}, {"id": "romulo", "nombre": "Rómulo", "bio": "Nómada del desierto de Sinjar, criptógrafo, estratega militar entrenado por los británicos. La mente de un matemático... y reflejos letales.", "img": "img/romulo.jpg", "det": "img/detalle/romulo.jpg"}, {"id": "taladro", "nombre": "Taladro", "bio": "El interrogador de Schwarze Sonne. Nadie se resiste ante él, nadie sale ileso.", "img": "img/taladro.jpg", "det": "img/detalle/taladro.jpg"}, {"id": "dario", "nombre": "Darío", "bio": "Investigador forense de Forarg en Buenos Aires. Un caso cualquiera está a punto de arrastrarlo a algo mucho más grande.", "img": "img/dario.jpg", "det": "img/detalle/dario.jpg"}, {"id": "lauchita", "nombre": "Lauchita", "bio": "Hacker clandestino. Rasgos asiáticos, pero más argentino que el mate y las facturas. Puede hackear cualquier cosa — pero todo tiene un precio.", "img": "img/lauchita.jpg", "det": "img/detalle/lauchita.jpg"}, {"id": "anna", "nombre": "Anna", "bio": "Una presencia inquietante en la fiesta del Hotel Adlon. Nadie imagina lo que está a punto de cambiar todo.", "img": "img/anna.jpg", "det": "img/detalle/anna.jpg"}, {"id": "marivea", "nombre": "Marivea", "bio": "La abuela de Jozef. Encendió en él el amor por la ciencia — y sabe defenderse mejor de lo que aparenta.", "img": "img/marivea.jpg", "det": "img/detalle/marivea.jpg"}, {"id": "pelusa", "nombre": "Pelusa", "bio": "El más veterano del escuadrón táctico. Ojos que ya vieron de todo.", "img": "img/pelusa.jpg", "det": "img/detalle/pelusa.jpg"}, {"id": "gardel", "nombre": "Gardel", "bio": "Compacto, fuerte, y el encargado de que las comunicaciones nunca fallen.", "img": "img/gardel.jpg", "det": "img/detalle/gardel.jpg"}, {"id": "truco", "nombre": "Truco", "bio": "El más joven del tridente táctico, pero con más experiencia de la que aparenta.", "img": "img/truco.jpg", "det": "img/detalle/truco.jpg"}, {"id": "carla", "nombre": "Carla", "bio": "La secretaria, no solo atiende llamadas — también fue entrenada para algo más.", "img": "img/carla.jpg", "det": "img/detalle/carla.jpg"}, {"id": "nadia", "nombre": "Nadia", "bio": "Al frente de una organización que lleva décadas guardando secretos ajenos.", "img": "img/nadia.jpg", "det": "img/detalle/nadia.jpg"}, {"id": "santiago", "nombre": "Santiago", "bio": "Un joven científico brillante, con más preguntas sobre sí mismo de las que imagina.", "img": "img/santiago.jpg", "det": "img/detalle/santiago.jpg"}, {"id": "verner", "nombre": "Verner", "bio": "Autoridad, rigidez, y una decisión imposible pesándole cada segundo de esa noche.", "img": "img/verner.jpg", "det": "img/detalle/verner.jpg"}, {"id": "jozef", "nombre": "Jozef", "bio": "Científico en ascenso, con el corazón dividido entre el arte y la ciencia — y un descubrimiento que lo va a cambiar todo.", "img": "img/jozef.jpg", "det": "img/detalle/jozef.jpg"}, {"id": "elena", "nombre": "Elena", "bio": "La esposa de Jozef. Radiante, valiente, dispuesta a proteger lo que más quiere pase lo que pase.", "img": "img/elena.jpg", "det": "img/detalle/elena.jpg"}, {"id": "aurora", "nombre": "Aurora", "bio": "Diminuta, filosa, y guardiana de un secreto que lleva setenta años protegiendo.", "img": "img/aurora.jpg", "det": "img/detalle/aurora.jpg"}, {"id": "lenz", "nombre": "Lenz", "bio": "Dinero, poder, y ningún límite. Alguien a quien nadie debería subestimar.", "img": "img/lenz.jpg", "det": "img/detalle/lenz.jpg"}, {"id": "agnes", "nombre": "Agnes", "bio": "Hermosa, de voz angelical — y mucho más peligrosa de lo que parece.", "img": "img/agnes.jpg", "det": "img/detalle/agnes.jpg"}, {"id": "mariana", "nombre": "Mariana", "bio": "La topógrafa que sostiene la vida de Darío en medio de la tormenta.", "img": "img/mariana.jpg", "det": "img/detalle/mariana.jpg"}];
+  var box=document.getElementById('files'),dlg=document.getElementById('dos'),cur=0,n=P.length;
+  function pad(i){return String(i+1).padStart(2,'0')+' / '+n}
+  P.forEach(function(p,i){
+    var b=document.createElement('button');b.type='button';b.className='file';
+    b.style.setProperty('--r',((i*37)%9-4)*0.25+'deg');
+    b.innerHTML='<span class="num"></span><div class="photo"><span class="clip"></span><img loading="lazy" decoding="async" alt=""><span class="stamp">Confidencial</span></div><h3></h3>';
+    b.querySelector('.num').textContent='Exp. '+pad(i);
+    var im=b.querySelector('img');im.src=p.det;im.alt='Foto de archivo de '+p.nombre;
+    im.onerror=function(){this.remove()};
+    b.querySelector('h3').textContent=p.nombre;
+    b.addEventListener('click',function(){open(i)});
+    box.appendChild(b);
+  });
+  function show(i){cur=(i+n)%n;var p=P[cur];
+    var im=document.getElementById('dosImg');im.src=p.img;im.alt='Retrato de '+p.nombre;
+    document.getElementById('dosNum').textContent='Expediente '+pad(cur);
+    document.getElementById('dosName').textContent=p.nombre;
+    document.getElementById('dosBio').textContent=p.bio;}
+  function open(i){show(i);if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')}
+  document.getElementById('dosClose').onclick=function(){dlg.close()};
+  document.getElementById('dosPrev').onclick=function(){show(cur-1)};
+  document.getElementById('dosNext').onclick=function(){show(cur+1)};
+  dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close()});
+  dlg.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)});
+})();
+</script>
+<script>
+(function(){
+  var ESC=["img/escenas/escena-01-motocicleta.jpg", "img/escenas/escena-02.jpg", "img/escenas/escena-03.jpg", "img/escenas/escena-04.jpg", "img/escenas/escena-05.jpg", "img/escenas/escena-06.jpg", "img/escenas/escena-07.jpg", "img/escenas/escena-08.jpg", "img/escenas/escena-09.jpg", "img/escenas/escena-10.jpg", "img/escenas/escena-11.jpg", "img/escenas/escena-12.jpg", "img/escenas/escena-13.jpg", "img/escenas/escena-14.jpg", "img/escenas/escena-15.jpg", "img/escenas/escena-16.jpg"], PAI=[["img/paisajes/paisaje-01.jpg", "Hotel Adlon, Berlín"], ["img/paisajes/paisaje-02.jpg", "Berlín, 1945"], ["img/paisajes/paisaje-03.jpg", "La Cumbrecita"], ["img/paisajes/paisaje-04.jpg", "Alpes bávaros"], ["img/paisajes/paisaje-05.jpg", "Antártida"], ["img/paisajes/paisaje-06.jpg", "Buenos Aires"], ["img/paisajes/paisaje-07.jpg", "Delta"]];
+  var lb=document.getElementById('lb'),li=document.getElementById('lbImg'),lc=document.getElementById('lbCap'),set=[],idx=0;
+  function show(i){idx=(i+set.length)%set.length;li.src=set[idx].src;li.alt=set[idx].cap;lc.textContent=set[idx].cap}
+  function open(list,i){set=list;show(i);lb.showModal?lb.showModal():lb.setAttribute('open','')}
+  document.getElementById('lbClose').onclick=function(){lb.close()};
+  document.getElementById('lbPrev').onclick=function(){show(idx-1)};
+  document.getElementById('lbNext').onclick=function(){show(idx+1)};
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+  lb.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')show(idx-1);if(e.key==='ArrowRight')show(idx+1)});
+  var escList=ESC.map(function(src,i){return{src:src,cap:'Evidencia N.º '+String(i+1).padStart(2,'0')+(i===0?' · La huida en la nieve':'')}});
+  var strip=document.getElementById('strip');
+  escList.forEach(function(e,i){
+    var b=document.createElement('button');b.type='button';b.className='ev';b.style.setProperty('--r',((i*53)%7-3)*0.35+'deg');
+    var im=document.createElement('img');im.loading='lazy';im.decoding='async';im.src=e.src;im.alt=e.cap;
+    var t=document.createElement('span');t.textContent=e.cap;
+    b.appendChild(im);b.appendChild(t);b.onclick=function(){open(escList,i)};strip.appendChild(b);
+  });
+  var paiList=PAI.map(function(p){return{src:p[0],cap:p[1]}});
+  var acc=document.getElementById('accordion');
+  paiList.forEach(function(p,i){
+    var b=document.createElement('button');b.type='button';b.className='pane';
+    var im=document.createElement('img');im.loading='lazy';im.decoding='async';im.src=p.src;im.alt=p.cap;
+    var t=document.createElement('span');t.textContent=p.cap;
+    b.appendChild(im);b.appendChild(t);b.onclick=function(){open(paiList,i)};acc.appendChild(b);
+  });
+})();
+</script>
 </body>
 </html>
