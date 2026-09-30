@@ -258,6 +258,22 @@ dialog.dos::backdrop{background:#05080bd9;backdrop-filter:blur(3px)}
 .coverwrap{display:flex;justify-content:center}
 .realcover{display:block;width:100%;max-width:340px;height:auto;box-shadow:0 30px 60px -25px #000,0 0 0 1px #ffffff14;transform:rotate(-2deg)}
 .cover[hidden]{display:none}
+/* ---------- RELATOS ---------- */
+.relatos{background:radial-gradient(ellipse at 50% 40%,#1d2c31,#151e23 70%)}
+.reltitle{text-align:center;padding-bottom:1rem;border-bottom:2px solid #6b3a26;max-width:900px;margin-inline:auto!important}
+.relgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5rem;margin-top:3rem}
+.rel{display:flex;flex-direction:column;align-items:center;text-align:center}
+.rel h3{font-family:var(--type);font-weight:700;color:#ea4617;font-size:1.3rem;margin:0;padding-bottom:.6rem;border-bottom:2px solid #6b3a26;width:100%}
+.relq{font-size:1.02rem;margin:1rem 0 .6rem;min-height:3.2em}
+.reltag{display:flex;align-items:center;gap:.75rem;width:100%;margin:0 0 1rem;color:#ea4617;font-size:.95rem}
+.reltag::before,.reltag::after{content:"";flex:1;height:1px;background:#ea4617aa}
+.rel img{display:block;width:auto;max-width:100%;height:auto;max-height:380px;
+  -webkit-mask-image:radial-gradient(ellipse 72% 78% at 50% 50%,#000 58%,transparent 100%);mask-image:radial-gradient(ellipse 72% 78% at 50% 50%,#000 58%,transparent 100%)}
+.relbtn{margin-top:1.25rem}
+.relbtn:not(.ghost){background:#ea4617;border-color:#ea4617;color:#fff}
+.relbtn:hover{background:#ff7a2e;border-color:#ff7a2e;color:#0c1621}
+@media (max-width:760px){.relgrid{grid-template-columns:1fr;gap:4rem}.relq{min-height:0}}
+
 @media (max-width:760px){
   .accordion{overflow-x:auto;scroll-snap-type:x mandatory;height:auto}
   .pane{flex:0 0 70%;aspect-ratio:9/16;scroll-snap-align:start}
@@ -450,6 +466,35 @@ dialog.lb::backdrop{background:#05080bee}
           <a href="https://www.instagram.com/antoniopetitescritor" target="_blank" rel="noopener">Instagram</a>
           <a href="https://www.youtube.com/@AntonioPetitEscritor" target="_blank" rel="noopener">YouTube</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec relatos" id="relatos" aria-labelledby="reltitle">
+    <div class="wrap">
+      <h2 id="reltitle" class="reltitle">Relatos y novedades</h2>
+      <div class="relgrid">
+        <article class="rel">
+          <h3>La final épica de 1987</h3>
+          <p class="relq">“¿Se puede ganar una final sin vencer al otro?”</p>
+          <p class="reltag"><span>Relato · 7 páginas</span></p>
+          <img src="img/relatos/1987.jpg" alt="Tapa de La final épica de 1987, de Antonio Petit" loading="lazy" width="300" height="440">
+          <a class="btn relbtn" href="https://www.amazon.com/final-%C3%A9pica-del-1987-hermanos-ebook/dp/B0GX3B3MZ8?psc=1" target="_blank" rel="noopener">Comprar en Amazon</a>
+        </article>
+        <article class="rel">
+          <h3>El tren</h3>
+          <p class="relq">“No importa el destino. Importa quién viaja con vos.”</p>
+          <p class="reltag"><span>Relato · 11 páginas</span></p>
+          <img src="img/relatos/tren.jpg" alt="Tapa de El tren, de Antonio Petit" loading="lazy" width="305" height="440">
+          <a class="btn relbtn" href="https://www.amazon.com/El-Tren-Spanish-Antonio-Petit-ebook/dp/B0H56MZC2W?psc=1" target="_blank" rel="noopener">Comprar en Amazon</a>
+        </article>
+        <article class="rel">
+          <h3>Poder</h3>
+          <p class="relq">“El deseo es el arma más antigua del mundo.”</p>
+          <p class="reltag"><span>Thriller erótico</span></p>
+          <img src="img/relatos/poder.jpg" alt="Tapa de Poder, próximamente" loading="lazy" width="350" height="440">
+          <a class="btn ghost relbtn" href="https://www.instagram.com/antoniopetitescritor" target="_blank" rel="noopener">Seguime para enterarte</a>
+        </article>
       </div>
     </div>
   </section>
