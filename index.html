@@ -419,8 +419,8 @@ dialog.lb::backdrop{background:#05080bee}
       <p class="status" id="status" aria-live="polite"></p>
       <p class="hint" id="tries"></p>
       <div id="keygen" hidden style="margin-top:2rem;text-align:left;border:1px dashed #ffffff44;padding:1rem">
-        <p style="margin:0 0 .5rem">Generador de clave (solo para el autor). Escribí la nueva combinación de 7 cifras:</p>
-        <input id="kgIn" inputmode="numeric" maxlength="7" style="font:inherit;padding:.4rem;width:10ch">
+        <p style="margin:0 0 .5rem">Generador de clave (solo para el autor). Escribí la nueva combinación de 6 cifras:</p>
+        <input id="kgIn" inputmode="numeric" maxlength="6" style="font:inherit;padding:.4rem;width:10ch">
         <button class="btn ghost" type="button" id="kgBtn">Generar</button>
         <p style="word-break:break-all;margin:.75rem 0 0" id="kgOut"></p>
       </div>
@@ -503,13 +503,13 @@ dialog.lb::backdrop{background:#05080bee}
      COMBINACIÓN DEL MALETÍN
      No se guarda el número, sino su huella cifrada (SHA-256).
      Para cambiarla: abrí la página agregando #generar-clave
-     al final de la dirección, escribí tu número de 7 cifras,
+     al final de la dirección, escribí tu número de 6 cifras,
      tocá Generar y pegá el resultado acá abajo, entre comillas.
      Mientras quede vacía (""), ninguna combinación abre el maletín.
      ===================================================== */
   var CLAVE_CIFRADA=""; // vacía = el maletín no se abre con ninguna combinación
 
-  var N=7,digits=[],dials=document.getElementById('dials');
+  var N=6,digits=[],dials=document.getElementById('dials');
   for(var k=0;k<N;k++)digits.push(0);
   digits.forEach(function(d,i){
     var w=document.createElement('div');w.className='dial';
@@ -540,7 +540,7 @@ dialog.lb::backdrop{background:#05080bee}
     var kg=document.getElementById('keygen');kg.hidden=false;
     document.getElementById('kgBtn').onclick=function(){
       var v=document.getElementById('kgIn').value.trim();
-      if(!/^\d{7}$/.test(v)){document.getElementById('kgOut').textContent='Tienen que ser exactamente 7 cifras.';return}
+      if(!/^\d{6}$/.test(v)){document.getElementById('kgOut').textContent='Tienen que ser exactamente 6 cifras.';return}
       sha(v).then(function(h){document.getElementById('kgOut').textContent=h});
     };
   }
