@@ -13,13 +13,13 @@
 <meta property="og:type" content="book">
 <meta property="og:title" content="Proyecto Aurora — Un thriller apasionante">
 <meta property="og:description" content="Un descubrimiento capaz de reescribir la historia de la humanidad. Berlín 1945, La Cumbrecita 1980, Buenos Aires 2014.">
-<meta property="og:image" content="https://antoniopetitescritor.github.io/PROYECTO-AURORA/img/hero.jpg">
+<meta property="og:image" content="https://antoniopetitescritor.github.io/PROYECTO-AURORA/img/hero.png">
 <meta property="og:url" content="https://antoniopetitescritor.github.io/PROYECTO-AURORA/">
 <meta property="og:locale" content="es_AR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Proyecto Aurora — Un thriller apasionante">
 <meta name="twitter:description" content="Un descubrimiento capaz de reescribir la historia de la humanidad. Berlín 1945, La Cumbrecita 1980, Buenos Aires 2014.">
-<meta name="twitter:image" content="https://antoniopetitescritor.github.io/PROYECTO-AURORA/img/hero.jpg">
+<meta name="twitter:image" content="https://antoniopetitescritor.github.io/PROYECTO-AURORA/img/hero.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -248,6 +248,8 @@ dialog.dos::backdrop{background:#05080bd9;backdrop-filter:blur(3px)}
   .file .stamp{font-size:.62rem;padding:.05rem .3rem;border-width:1.5px}
   .photo .clip{width:10px;height:26px;left:10px}
 }
+.igwrap{display:flex;justify-content:center}
+.igwrap iframe{max-width:100%!important}
 @media (max-width:760px){
   .accordion{overflow-x:auto;scroll-snap-type:x mandatory;height:auto}
   .pane{flex:0 0 70%;aspect-ratio:9/16;scroll-snap-align:start}
@@ -288,7 +290,7 @@ dialog.lb::backdrop{background:#05080bee}
 <header class="hero2">
   <div class="glow" aria-hidden="true"></div>
   <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Proyecto Aurora, de Antonio Petit</h1>
-  <img class="art" src="img/hero.jpg" fetchpriority="high" alt="Proyecto Aurora, de Antonio Petit. Un thriller apasionante." width="1600" height="831">
+  <img class="art" src="img/hero.jpg" onerror="this.onerror=null;this.src='img/hero.png'" fetchpriority="high" alt="Proyecto Aurora, de Antonio Petit. Un thriller apasionante." width="1600" height="831">
     <div class="wrap under">
     <p class="question">¿Hay secretos que la humanidad debería conocer?</p>
     <div class="actions">
@@ -387,7 +389,12 @@ dialog.lb::backdrop{background:#05080bee}
     <div class="wrap">
       <h2 id="trailertitle">Tráiler</h2>
       <p class="lede">El libro, en movimiento.</p>
-      <div class="trailer"><div><strong>Próximamente</strong><p>El tráiler oficial se estrena en las redes del autor.</p></div></div>
+      <div class="igwrap">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DdfD1Ahq11a/" data-instgrm-version="14" style="background:#0f151b;border:1px solid #ffffff22;margin:0 auto;max-width:540px;min-width:280px;width:100%;padding:0">
+          <a href="https://www.instagram.com/p/DdfD1Ahq11a/" target="_blank" rel="noopener" style="display:block;padding:3rem 1rem;text-align:center;color:#d9e6ea">Ver el tráiler de Proyecto Aurora en Instagram</a>
+        </blockquote>
+      </div>
+      <script async src="https://www.instagram.com/embed.js"></script>
     </div>
   </section>
 
@@ -540,13 +547,13 @@ dialog.lb::backdrop{background:#05080bee}
     b.innerHTML='<span class="num"></span><div class="photo"><span class="clip"></span><img loading="lazy" decoding="async" alt=""><span class="stamp">Confidencial</span></div><h3></h3>';
     b.querySelector('.num').textContent='Exp. '+pad(i);
     var im=b.querySelector('img');im.src=p.det;im.alt='Foto de archivo de '+p.nombre;
-    im.onerror=function(){this.remove()};
+    im.onerror=function(){if(!this.dataset.fb){this.dataset.fb=1;this.src=this.src.replace(/\.jpg(\?.*)?$/,'.png')}else{this.remove()}};
     b.querySelector('h3').textContent=p.nombre;
     b.addEventListener('click',function(){open(i)});
     box.appendChild(b);
   });
   function show(i){cur=(i+n)%n;var p=P[cur];
-    var im=document.getElementById('dosImg');im.src=p.img;im.alt='Retrato de '+p.nombre;
+    var im=document.getElementById('dosImg');im.onerror=function(){if(!this.dataset.fb){this.dataset.fb=1;this.src=p.img.replace(/\.jpg$/,'.png')}};im.dataset.fb='';im.src=p.img;im.alt='Retrato de '+p.nombre;
     document.getElementById('dosNum').textContent='Expediente '+pad(cur);
     document.getElementById('dosName').textContent=p.nombre;
     document.getElementById('dosBio').textContent=p.bio;}
