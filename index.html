@@ -250,6 +250,9 @@ dialog.dos::backdrop{background:#05080bd9;backdrop-filter:blur(3px)}
 }
 .igwrap{display:flex;justify-content:center}
 .igwrap iframe{max-width:100%!important}
+.coverwrap{display:flex;justify-content:center}
+.realcover{display:block;width:100%;max-width:340px;height:auto;box-shadow:0 30px 60px -25px #000,0 0 0 1px #ffffff14;transform:rotate(-2deg)}
+.cover[hidden]{display:none}
 @media (max-width:760px){
   .accordion{overflow-x:auto;scroll-snap-type:x mandatory;height:auto}
   .pane{flex:0 0 70%;aspect-ratio:9/16;scroll-snap-align:start}
@@ -427,7 +430,11 @@ dialog.lb::backdrop{background:#05080bee}
 
   <section class="sec buy" id="comprar" aria-labelledby="buytitle">
     <div class="wrap">
-      <div class="cover" aria-hidden="true"><span>Antonio Petit</span><b>Proyecto<br>Aurora</b><span>Editorial Dunken</span></div>
+      <div class="coverwrap">
+        <img class="realcover" src="img/tapa-libro.jpg" alt="Tapa del libro Proyecto Aurora, de Antonio Petit" loading="lazy"
+             onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='img/tapa-libro.png'}else{this.remove();document.getElementById('mockCover').hidden=false}">
+        <div class="cover" id="mockCover" hidden aria-hidden="true"><span>Antonio Petit</span><b>Proyecto<br>Aurora</b><span>Editorial Dunken</span></div>
+      </div>
       <div>
         <h2 id="buytitle">Conseguí el libro</h2>
         <p class="lede" style="margin-bottom:0">264 páginas. Tres épocas. Un secreto capaz de reescribir la historia de la humanidad.</p>
