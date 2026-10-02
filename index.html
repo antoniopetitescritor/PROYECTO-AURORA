@@ -85,6 +85,10 @@ a{color:inherit}
 .btn{font:inherit;font-weight:700;cursor:pointer;display:inline-block;text-decoration:none;padding:.85rem 1.4rem;border:1px solid var(--ice);background:var(--ice);color:var(--night);border-radius:2px}
 .btn.ghost{background:transparent;color:var(--ice)}
 .btn:hover{background:var(--aurora-g);border-color:var(--aurora-g);color:var(--night)}
+.buylead{margin:1.25rem 0 .6rem;font-weight:700}
+.buybtns{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:.5rem}
+.buybtns .btn{padding:.7rem .9rem;font-size:.9rem;white-space:nowrap;text-align:center}
+@media (max-width:560px){.buybtns{grid-template-columns:1fr 1fr;justify-content:stretch}}
 
 /* ---------- ERAS ---------- */
 .era{position:relative;padding-block:clamp(5rem,12vw,9rem);overflow:hidden}
@@ -162,6 +166,14 @@ a{color:inherit}
 .reveal{display:none;text-align:left;background:var(--manila);color:var(--manila-ink);padding:1.75rem;margin-top:2rem;border-radius:3px}
 .reveal.open{display:block;animation:unfold .6s ease-out}
 @keyframes unfold{from{opacity:0;transform:translateY(-12px)}}
+.files[hidden]{display:none}
+.files.shown{margin-top:3rem;animation:unfold .45s ease}
+.foldertab{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;flex-wrap:wrap;gap:.4rem 1rem;position:relative;width:100%;max-width:560px;margin:2.75rem 0 0;background:var(--manila);color:var(--manila-ink);padding:1.4rem 1.5rem;border-radius:0 6px 3px 3px;box-shadow:0 12px 24px -12px #000c;transition:transform .25s}
+.foldertab::before{content:"";position:absolute;top:-16px;left:0;width:38%;height:17px;background:var(--manila);border-radius:6px 6px 0 0}
+.foldertab:hover,.foldertab:focus-visible{transform:translateY(-3px)}
+.foldertab:focus-visible{outline:2px solid #ff7a2e;outline-offset:4px}
+.foldertab .ftlabel{font-family:var(--display);font-size:clamp(1.4rem,3.5vw,1.9rem);font-weight:700;line-height:1.1}
+.foldertab .stamp{position:static;transform:rotate(-7deg);font-size:1rem}
 .reveal h3{font-family:var(--display);font-size:1.8rem;margin:0 0 .75rem}
 .reveal p{margin:0 0 1rem}
 .reveal .placeholder{border:1px dashed #2b241899;padding:1rem;font-style:italic}
@@ -347,7 +359,7 @@ dialog.lb::backdrop{background:#05080bee}
   <section class="sec" aria-labelledby="maptitle">
     <div class="wrap">
       <h2 id="maptitle">La persecución</h2>
-      <p class="lede">Tres continentes, del corazón de Europa al hielo del sur. Elegí un lugar.</p>
+      <p class="lede">Tres continentes, del corazón de Europa al hielo del sur. Elige un lugar tocando cada punto.</p>
       <div class="mapgrid">
         <div class="mapwrap"><img id="mapBg" alt=""><svg class="map" viewBox="100 26 112 150" role="img" aria-label="Mapa de los lugares de la novela">
           <g id="grat"></g>
@@ -367,8 +379,11 @@ dialog.lb::backdrop{background:#05080bee}
   <section class="sec dossier" id="expediente" aria-labelledby="dostitle">
     <div class="wrap">
       <h2 id="dostitle">Expediente</h2>
-      <p class="lede">Personas de interés en el caso. Abrí cada ficha para ver el archivo completo.</p>
-      <div class="files" id="files"></div>
+      <p class="lede">Personas de interés en el caso.</p>
+      <button class="foldertab" id="folderBtn" type="button" aria-expanded="false" aria-controls="files">
+        <span class="ftlabel" id="folderLabel">Abrir ficha</span><span class="stamp">Confidencial</span>
+      </button>
+      <div class="files" id="files" hidden></div>
     </div>
     <dialog class="dos" id="dos" aria-labelledby="dosName">
       <div class="sheet">
@@ -388,7 +403,7 @@ dialog.lb::backdrop{background:#05080bee}
   <section class="sec scenes" id="escenas" aria-labelledby="esctitle">
     <div class="wrap">
       <h2 id="esctitle">Escenas</h2>
-      <p class="lede">Material de evidencia recuperado. Deslizá para ver más y tocá una foto para ampliarla.</p>
+      <p class="lede">Material de evidencia recuperado. Desliza para ver más y toca una foto para ampliarla.</p>
     </div>
     <div class="strip" id="strip"></div>
   </section>
@@ -426,7 +441,7 @@ dialog.lb::backdrop{background:#05080bee}
     <div class="wrap casebox">
       <h2 id="casetitle">El maletín</h2>
       <p class="clue">El maletín sigue cerrado.</p>
-      <p class="hint">Muy pronto voy a revelar las pistas en mis redes, y quien lo abra se gana un ejemplar de Proyecto Aurora. Seguime para no perdértelo.</p>
+      <p class="hint">Muy pronto voy a revelar las pistas en mis redes, y quien lo abra se gana un ejemplar de Proyecto Aurora. Sígueme para no perdértelo.</p>
       <p class="hint casesocial"><a href="https://www.tiktok.com/@antoniopetitescritor" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.instagram.com/antoniopetitescritor" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@AntonioPetitEscritor" target="_blank" rel="noopener">YouTube</a></p>
       <div class="briefcase" id="briefcase">
         <div class="dials" id="dials"></div>
@@ -435,7 +450,7 @@ dialog.lb::backdrop{background:#05080bee}
       <p class="status" id="status" aria-live="polite"></p>
       <p class="hint" id="tries"></p>
       <div id="keygen" hidden style="margin-top:2rem;text-align:left;border:1px dashed #ffffff44;padding:1rem">
-        <p style="margin:0 0 .5rem">Generador de clave (solo para el autor). Escribí la nueva combinación de 6 cifras:</p>
+        <p style="margin:0 0 .5rem">Generador de clave (solo para el autor). Escribe la nueva combinación de 6 cifras:</p>
         <input id="kgIn" inputmode="numeric" maxlength="6" style="font:inherit;padding:.4rem;width:10ch">
         <button class="btn ghost" type="button" id="kgBtn">Generar</button>
         <p style="word-break:break-all;margin:.75rem 0 0" id="kgOut"></p>
@@ -443,7 +458,7 @@ dialog.lb::backdrop{background:#05080bee}
       <div class="reveal" id="reveal" role="region" aria-label="Premio del maletín">
         <h3>¡Abriste el maletín!</h3>
         <p>Ganaste un ejemplar de <strong>Proyecto Aurora</strong>.</p>
-        <p>Sacá una captura de esta pantalla y mandámela por mensaje a <strong>@antoniopetitescritor</strong> en Instagram o TikTok para reclamar tu libro.</p>
+        <p>Saca una captura de esta pantalla y envíamela por mensaje a <strong>@antoniopetitescritor</strong> en Instagram o TikTok para reclamar tu libro.</p>
         <p id="winCode" style="font-weight:700"></p>
       </div>
     </div>
@@ -457,10 +472,16 @@ dialog.lb::backdrop{background:#05080bee}
         <div class="cover" id="mockCover" hidden aria-hidden="true"><span>Antonio Petit</span><b>Proyecto<br>Aurora</b><span>Editorial Dunken</span></div>
       </div>
       <div>
-        <h2 id="buytitle">Conseguí el libro</h2>
+        <h2 id="buytitle">Consigue el libro</h2>
         <p class="lede" style="margin-bottom:0">264 páginas. Tres épocas. Un secreto capaz de reescribir la historia de la humanidad.</p>
         <p class="meta">Editorial Dunken, Buenos Aires, 2026 · ISBN 978-987-85-5848-6 · Papel y EPUB</p>
-        <a class="btn" href="https://www.dunken.org/SYS.shop/index.php?id=22571" target="_blank" rel="noopener">Comprar en Dunken</a>
+        <p class="buylead">Comprar en:</p>
+        <div class="buybtns">
+          <a class="btn" href="https://www.dunken.org/SYS.shop/index.php?id=22571" target="_blank" rel="noopener">Editorial Dunken</a>
+          <a class="btn ghost" href="https://www.amazon.com/Proyecto-Aurora-Spanish-Antonio-Petit/dp/987855810X" target="_blank" rel="noopener">Amazon</a>
+          <a class="btn ghost" href="https://play.google.com/store/books/details/Antonio_Petit_Proyecto_Aurora?id=fR7_EQAAQBAJ" target="_blank" rel="noopener">Google Play</a>
+          <a class="btn ghost" href="https://play.google.com/store/audiobooks/details/Antonio_Petit_Proyecto_Aurora?id=AQAAAED6KytrwM" target="_blank" rel="noopener">Audiolibro</a>
+        </div>
         <div class="social">
           <a href="https://www.tiktok.com/@antoniopetitescritor" target="_blank" rel="noopener">TikTok</a>
           <a href="https://www.instagram.com/antoniopetitescritor" target="_blank" rel="noopener">Instagram</a>
@@ -493,7 +514,7 @@ dialog.lb::backdrop{background:#05080bee}
           <p class="relq">“El deseo es el arma más antigua del mundo.”</p>
           <p class="reltag"><span>Thriller erótico</span></p>
           <img src="img/relatos/poder.jpg" alt="Tapa de Poder, próximamente" loading="lazy" width="350" height="440">
-          <a class="btn ghost relbtn" href="https://www.instagram.com/antoniopetitescritor" target="_blank" rel="noopener">Seguime para enterarte</a>
+          <a class="btn ghost relbtn" href="https://www.instagram.com/antoniopetitescritor" target="_blank" rel="noopener">Sígueme para enterarte</a>
         </article>
       </div>
     </div>
@@ -547,9 +568,9 @@ dialog.lb::backdrop{background:#05080bee}
   /* =====================================================
      COMBINACIÓN DEL MALETÍN
      No se guarda el número, sino su huella cifrada (SHA-256).
-     Para cambiarla: abrí la página agregando #generar-clave
-     al final de la dirección, escribí tu número de 6 cifras,
-     tocá Generar y pegá el resultado acá abajo, entre comillas.
+     Para cambiarla: abre la página agregando #generar-clave
+     al final de la dirección, escribe tu número de 6 cifras,
+     toca Generar y pega el resultado aquí abajo, entre comillas.
      Mientras quede vacía (""), ninguna combinación abre el maletín.
      ===================================================== */
   var CLAVE_CIFRADA=""; // vacía = el maletín no se abre con ninguna combinación
@@ -575,7 +596,7 @@ dialog.lb::backdrop{background:#05080bee}
         document.getElementById('winCode').textContent='Abierto el '+new Date().toLocaleString('es-AR');
         reveal.classList.add('open');reveal.scrollIntoView({behavior:'smooth',block:'start'});
       }else{
-        status.style.color='';status.textContent='Combinación incorrecta. Seguí intentando.';
+        status.style.color='';status.textContent='Combinación incorrecta. Sigue intentando.';
         triesEl.textContent='Intentos: '+tries;
         bc.classList.remove('opened');void bc.offsetWidth;bc.classList.add('opened');
       }
@@ -597,6 +618,12 @@ dialog.lb::backdrop{background:#05080bee}
 (function(){
   var P=[{"id": "gabriel", "nombre": "Gabriel \"el Turco\" Hazzad", "bio": "Uno de los amigos de siempre en La Fogazza — el que nunca falta a una charla de café.", "img": "img/gabriel.jpg", "det": "img/detalle/gabriel.jpg"}, {"id": "hipolito", "nombre": "Hipólito \"Puflito\" Gómez", "bio": "El filósofo del bar. Un truco de magia, un consejo de vida, y un encendedor que se queda en la memoria de Darío para siempre.", "img": "img/hipolito.jpg", "det": "img/detalle/hipolito.jpg"}, {"id": "eduardo", "nombre": "Eduardo \"el Judío\"", "bio": "Otro pilar de La Fogazza — parte del grupo que nunca deja solo a Darío, pase lo que pase.", "img": "img/eduardo.jpg", "det": "img/detalle/eduardo.jpg"}, {"id": "mario", "nombre": "Mario \"el Tano\" Fuccile", "bio": "El tercero del trío de amigos que espera a Darío cada vez que el mundo se le complica.", "img": "img/mario.jpg", "det": "img/detalle/mario.jpg"}, {"id": "romulo", "nombre": "Rómulo", "bio": "Nómada del desierto de Sinjar, criptógrafo, estratega militar entrenado por los británicos. La mente de un matemático... y reflejos letales.", "img": "img/romulo.jpg", "det": "img/detalle/romulo.jpg"}, {"id": "taladro", "nombre": "Taladro", "bio": "El interrogador de Schwarze Sonne. Nadie se resiste ante él, nadie sale ileso.", "img": "img/taladro.jpg", "det": "img/detalle/taladro.jpg"}, {"id": "dario", "nombre": "Darío", "bio": "Investigador forense de Forarg en Buenos Aires. Un caso cualquiera está a punto de arrastrarlo a algo mucho más grande.", "img": "img/dario.jpg", "det": "img/detalle/dario.jpg"}, {"id": "lauchita", "nombre": "Lauchita", "bio": "Hacker clandestino. Rasgos asiáticos, pero más argentino que el mate y las facturas. Puede hackear cualquier cosa — pero todo tiene un precio.", "img": "img/lauchita.jpg", "det": "img/detalle/lauchita.jpg"}, {"id": "anna", "nombre": "Anna", "bio": "Una presencia inquietante en la fiesta del Hotel Adlon. Nadie imagina lo que está a punto de cambiar todo.", "img": "img/anna.jpg", "det": "img/detalle/anna.jpg"}, {"id": "marivea", "nombre": "Marivea", "bio": "La abuela de Jozef. Encendió en él el amor por la ciencia — y sabe defenderse mejor de lo que aparenta.", "img": "img/marivea.jpg", "det": "img/detalle/marivea.jpg"}, {"id": "pelusa", "nombre": "Pelusa", "bio": "El más veterano del escuadrón táctico. Ojos que ya vieron de todo.", "img": "img/pelusa.jpg", "det": "img/detalle/pelusa.jpg"}, {"id": "gardel", "nombre": "Gardel", "bio": "Compacto, fuerte, y el encargado de que las comunicaciones nunca fallen.", "img": "img/gardel.jpg", "det": "img/detalle/gardel.jpg"}, {"id": "truco", "nombre": "Truco", "bio": "El más joven del tridente táctico, pero con más experiencia de la que aparenta.", "img": "img/truco.jpg", "det": "img/detalle/truco.jpg"}, {"id": "carla", "nombre": "Carla", "bio": "La secretaria, no solo atiende llamadas — también fue entrenada para algo más.", "img": "img/carla.jpg", "det": "img/detalle/carla.jpg"}, {"id": "nadia", "nombre": "Nadia", "bio": "Al frente de una organización que lleva décadas guardando secretos ajenos.", "img": "img/nadia.jpg", "det": "img/detalle/nadia.jpg"}, {"id": "santiago", "nombre": "Santiago", "bio": "Un joven científico brillante, con más preguntas sobre sí mismo de las que imagina.", "img": "img/santiago.jpg", "det": "img/detalle/santiago.jpg"}, {"id": "verner", "nombre": "Verner", "bio": "Autoridad, rigidez, y una decisión imposible pesándole cada segundo de esa noche.", "img": "img/verner.jpg", "det": "img/detalle/verner.jpg"}, {"id": "jozef", "nombre": "Jozef", "bio": "Científico en ascenso, con el corazón dividido entre el arte y la ciencia — y un descubrimiento que lo va a cambiar todo.", "img": "img/jozef.jpg", "det": "img/detalle/jozef.jpg"}, {"id": "elena", "nombre": "Elena", "bio": "La esposa de Jozef. Radiante, valiente, dispuesta a proteger lo que más quiere pase lo que pase.", "img": "img/elena.jpg", "det": "img/detalle/elena.jpg"}, {"id": "aurora", "nombre": "Aurora", "bio": "Diminuta, filosa, y guardiana de un secreto que lleva setenta años protegiendo.", "img": "img/aurora.jpg", "det": "img/detalle/aurora.jpg"}, {"id": "lenz", "nombre": "Lenz", "bio": "Dinero, poder, y ningún límite. Alguien a quien nadie debería subestimar.", "img": "img/lenz.jpg", "det": "img/detalle/lenz.jpg"}, {"id": "agnes", "nombre": "Agnes", "bio": "Hermosa, de voz angelical — y mucho más peligrosa de lo que parece.", "img": "img/agnes.jpg", "det": "img/detalle/agnes.jpg"}, {"id": "mariana", "nombre": "Mariana", "bio": "La topógrafa que sostiene la vida de Darío en medio de la tormenta.", "img": "img/mariana.jpg", "det": "img/detalle/mariana.jpg"}];
   var box=document.getElementById('files'),dlg=document.getElementById('dos'),cur=0,n=P.length;
+  var fb=document.getElementById('folderBtn'),fl=document.getElementById('folderLabel');
+  fb.addEventListener('click',function(){
+    var abrir=box.hidden;box.hidden=!abrir;box.classList.toggle('shown',abrir);
+    fb.setAttribute('aria-expanded',abrir?'true':'false');
+    fl.textContent=abrir?'Cerrar ficha':'Abrir ficha';
+  });
   function pad(i){return String(i+1).padStart(2,'0')+' / '+n}
   P.forEach(function(p,i){
     var b=document.createElement('button');b.type='button';b.className='file';
