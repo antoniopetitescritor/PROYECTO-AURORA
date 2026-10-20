@@ -686,5 +686,31 @@ dialog.lb::backdrop{background:#05080bee}
   });
 })();
 </script>
+<script>
+/* Medicion de clics para Google Analytics */
+document.addEventListener("click",function(e){
+  if(typeof gtag!=="function")return;
+  var t=e.target;
+  var a=t.closest?t.closest("a[href]"):null;
+  if(a){
+    var u=a.href||"",h=a.getAttribute("href")||"",txt=(a.textContent||"").replace(/\s+/g," ").trim().slice(0,60),n=null;
+    if(u.indexOf("dunken.org")>-1)n="comprar_dunken";
+    else if(u.indexOf("play.google.com/store/audiobooks")>-1)n="comprar_audiolibro";
+    else if(u.indexOf("play.google.com/store/books")>-1)n="comprar_google_play";
+    else if(u.indexOf("amazon.")>-1)n=a.classList.contains("relbtn")?"comprar_relato":"comprar_amazon";
+    else if(u.indexOf("instagram.com/reel")>-1||u.indexOf("instagram.com/p/")>-1)n="ver_trailer";
+    else if(u.indexOf("instagram.com")>-1)n="click_instagram";
+    else if(u.indexOf("tiktok.com")>-1)n="click_tiktok";
+    else if(u.indexOf("youtube.com")>-1||u.indexOf("youtu.be")>-1)n="click_youtube";
+    else if(h==="#comprar")n="ir_a_comprar";
+    else if(h==="#epocas")n="abrir_expediente";
+    if(n)gtag("event",n,{link_text:txt,link_url:u,transport_type:"beacon"});
+    return;
+  }
+  var b=t.closest?t.closest("button"):null;
+  if(b&&b.id==="tryBtn")gtag("event","abrir_maletin");
+  if(b&&b.id==="kgBtn")gtag("event","generar_clave");
+},true);
+</script>
 </body>
 </html>
