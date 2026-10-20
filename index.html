@@ -712,5 +712,24 @@ document.addEventListener("click",function(e){
   if(b&&b.id==="kgBtn")gtag("event","generar_clave");
 },true);
 </script>
+<script>
+/* Medicion de carruseles y mapa para Google Analytics */
+(function(){
+function slug(s){return (s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"_").replace(/^_+|_+$/g,"").slice(0,40);}
+function ev(n){if(typeof gtag==="function")gtag("event",n);}
+document.addEventListener("click",function(e){
+  var t=e.target;if(!t||!t.closest)return;
+  var b,x;
+  if((b=t.closest("#files button.file"))){x=b.querySelector("h3");ev("pers_"+slug(x&&x.textContent));return;}
+  if((b=t.closest("#strip button.ev"))){x=b.querySelector("span");ev("esc_"+slug(x&&x.textContent));return;}
+  if((b=t.closest("#accordion button.pane"))){x=b.querySelector("span");ev("pai_"+slug(x&&x.textContent));return;}
+  if((b=t.closest("#placeList button"))){x=b.firstChild;ev("lugar_"+slug(x&&x.textContent));return;}
+  if((b=t.closest("#pts g.pt"))){x=b.querySelector("text");ev("lugar_"+slug(x&&x.textContent));return;}
+  if(t.closest("#folderBtn")){ev("abrir_ficha_personajes");return;}
+  if(t.closest("#dosNext,#dosPrev")){ev("navegar_personajes");return;}
+  if(t.closest("#lbNext,#lbPrev")){ev("navegar_galeria");}
+},true);
+})();
+</script>
 </body>
 </html>
